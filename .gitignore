@@ -1,0 +1,11 @@
+*.elc
+*~
+.bm-repository
+.cask/
+ac-comphist.dat
+clang-complete
+auto-save-list/
+el-get/
+elisp/
+history
+snippets/

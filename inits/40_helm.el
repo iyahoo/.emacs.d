@@ -1,0 +1,26 @@
+;;; helm ------------------------------------------------------------
+(require 'helm-mode)
+(require 'helm-config)
+(require 'helm-files)
+(require 'helm-ag)
+;;(define-key helm-parse-keys (kbd "C-h") )
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(define-key helm-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-generic-files-map (kbd "C-h") 'delete-backward-char)
+(define-key isearch-mode-map (kbd "C-o") 'helm-occur-from-isearch)
+
+(setq recentf-max-saved-items 10000)
+(setq kill-ring-max 1000)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+(global-set-key (kbd "C-c h") 'helm-mini)
+(defalias 'hx 'helm-M-x)
+(defalias 'ho 'helm-occur)
+(defalias 'hg 'helm-do-grep)
+(defalias 'ht 'helm-etags-select)
+(defalias 'ha 'helm-ag)
+(defalias 'haf 'helm-ag-this-file)
+
+(require 'helm-c-yasnippet)
+(global-set-key (kbd "C--") 'helm-c-yas-complete)
