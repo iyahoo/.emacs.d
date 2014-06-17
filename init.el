@@ -15,7 +15,7 @@
               (add-to-list 'load-path default-directory)
               (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
                   (normal-top-level-add-subdirs-to-load-path))))))
-(add-to-load-path "../.emacs.d" "elisp" ".cask" "../../../../Applications/Emacs.app/Contents/Resources")
+(add-to-load-path "../.emacs.d")
 
 ;; cask
 
