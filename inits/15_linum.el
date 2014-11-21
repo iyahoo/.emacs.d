@@ -1,4 +1,6 @@
 (setq linum-delay t)
-(setq linum-format "%3d")
+(defadvice linum-schedule (around my-linum-schedule () activate)
+  (run-with-idle-timer 0.2 nil #'linum-update-current))
+(setq linum-format "%4d")
 (global-linum-mode t)
 (hlinum-activate)

@@ -1,6 +1,7 @@
 (setq quack-default-program "gosh")
 (require 'quack)
 (require 'scheme-complete)
+
 ;;(autoload 'scheme-smart-complete "scheme-complete" nil t)
 ;; auto-completeを使っているので不要
 ;; (eval-after-load 'scheme

@@ -9,7 +9,7 @@
 
 (ffap-bindings)
 
-(iswitchb-mode 1)
+(iswitchb-mode t)
 
 (setq read-buffer-function 'iswitchb-read-buffer)
 

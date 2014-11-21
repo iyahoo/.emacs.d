@@ -15,15 +15,13 @@
               (add-to-list 'load-path default-directory)
               (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
                   (normal-top-level-add-subdirs-to-load-path))))))
-(add-to-load-path "../.emacs.d")
+(add-to-load-path "../.emacs.d" ".cask/")
 
 ;; cask
 
 (cond
  ((string-match "apple-darwin" system-configuration)
-  (load "~/.emacs.d/etc/cocoa.el")
-  (require 'cask "/usr/local/Cellar/cask/0.7.0/cask.el")
-  (cask-initialize))
+  (load "~/.emacs.d/etc/cocoa.el"))
  
  ((string-match "linux" system-configuration)
   (load "~/.emacs.d/etc/linux.el"))
@@ -42,3 +40,25 @@
 
 ;; ログファイル
 (setq init-loader-show-log-after-init nil)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(anzu-deactivate-region t)
+ '(anzu-mode-lighter "")
+ '(anzu-replace-to-string-separator " => ")
+ '(anzu-search-threshold 1000)
+ '(google-translate-default-source-language "en")
+ '(google-translate-default-target-language "ja")
+ '(haskell-process-type (quote cabal-repl))
+ '(haskell-program-name "cabal repl")
+ '(safe-local-variable-values (quote ((Syntax . Common-Lisp))))
+ '(yas-trigger-key (kbd "TAB")))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

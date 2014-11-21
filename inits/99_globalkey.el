@@ -1,10 +1,8 @@
-
 ;;; key --------------------------------------------------------------
 
 (global-set-key (kbd "C-s") 'forward-char)
 
-(global-set-key (kbd "C-f") 'isearch-forward)
-(define-key search-map (kbd "C-f") 'isearch-forward)
+(global-set-key (kbd "C-f") 'helm-occur)
 
 (global-set-key (kbd "M-s") 'forward-word)
 
@@ -47,9 +45,6 @@
 ;; 縦ウィンドウ分割を Ctrl-x Ctrl-3 で可能に
 ;; Ctrl-x Ctrl-d でも  を起動する
 
-(global-set-key (kbd "C-x C-1") 'delete-other-windows)
-(global-set-key (kbd "C-x C-2") 'split-window-below)
-(global-set-key (kbd "C-x C-3") 'split-window-right)
 (global-set-key (kbd "C-x C-d") 'dired)
 
  ;; quoted-insert は C-q C-q へ割り当て

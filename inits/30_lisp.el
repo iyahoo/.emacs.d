@@ -1,15 +1,39 @@
 (define-key emacs-lisp-mode-map (kbd "C-c C-d") 'lispxmp)
 (define-key lisp-mode-map (kbd "C-c C-d") 'lispxmp)
 
+;; clispをデフォルトのCommon Lisp処理系に設定
+;; (setq inferior-lisp-program "/opt/local/bin/clisp")
+
 ;; Clozure CLをデフォルトのCommon Lisp処理系に設定
-(setq inferior-lisp-program "ccl")
-;; (setq inferior-lisp-program "clisp")
+(setq inferior-lisp-program "~/opt/ccl/scripts/ccl")
+
+;; sbclをデフォルトのCommon Lisp処理系に設定
+;; (setq inferior-lisp-program "/opt/local/bin/sbcl")
+
+;; aclをデフォルトのCommon Lisp処理系に設定
+;; (setq inferior-lisp-program "/usr/local/bin/alisp")
+
+(setq slime-lisp-implementations '((ccl ("~/opt/ccl/scripts/ccl"))
+                                   (clisp ("/opt/local/bin/clisp"))
+                                   (sbcl ("/opt/local/bin/sbcl"))
+                                   (alisp ("/usr/local/bin/alisp"))))
+
+(setq auto-mode-alist
+      (append '(("\\.cl" . lisp-mode))
+              auto-mode-alist))
 
 ;; ~/.emacs.d/slimeをload-pathに追加
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/slime"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/slime"))
 (slime-setup '(slime-repl slime-fancy slime-banner))
 
-(defalias 'sl-restart 'slime-restart-inferior-lisp)
+;; key
+(define-key slime-repl-mode-map (kbd "M-s") 'forward-word)
+
+(defalias 'sl-restart 'slime-restart-inferior-Lisp)
+
+(require 'ac-slime)
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
 ;; Apropos
 (push '("*slime-apropos*") popwin:special-display-config)

@@ -35,5 +35,3 @@
 
 (color-theme-initialize)
 (color-theme-deep-blue)
-
-

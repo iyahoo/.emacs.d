@@ -1,5 +1,5 @@
 ;; elscreen
-(elscreen-start)
+(elscreen-start) 
 
 (global-set-key (kbd "M-t") 'elscreen-create)
 (global-set-key (kbd "M-T") 'elscreen-clone)

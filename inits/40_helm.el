@@ -12,15 +12,14 @@
 (setq recentf-max-saved-items 10000)
 (setq kill-ring-max 1000)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "M-x") 'helm-M-x)
-
+(global-set-key (kbd "C-c M-x") 'helm-M-x)
+(global-set-key (kbd "C-o") 'helm-occur)
 (global-set-key (kbd "C-c h") 'helm-mini)
-(defalias 'hx 'helm-M-x)
-(defalias 'ho 'helm-occur)
+(global-set-key (kbd "C--") 'helm-c-yas-complete)
+
 (defalias 'hg 'helm-do-grep)
 (defalias 'ht 'helm-etags-select)
 (defalias 'ha 'helm-ag)
 (defalias 'haf 'helm-ag-this-file)
 
 (require 'helm-c-yasnippet)
-(global-set-key (kbd "C--") 'helm-c-yas-complete)
