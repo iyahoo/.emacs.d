@@ -1,5 +1,5 @@
 ;; elscreen
-(elscreen-start) 
+(elscreen-start)
 
 (global-set-key (kbd "M-t") 'elscreen-create)
 (global-set-key (kbd "M-T") 'elscreen-clone)
@@ -38,5 +38,5 @@
       (set-frame-name title)
     (setq frame-title-format title)))))
  
-(eval-after-load "elscreen"
-  '(add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update))
+;; (eval-after-load "elscreen"
+;;   '(add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update))

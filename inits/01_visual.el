@@ -5,6 +5,7 @@
      (:background "LightGoldenrodYellow" t))
     (t (:bold t)))
   "hl-line's my face")
+
 (setq hl-line-face 'my-hl-line-face)
 (global-hl-line-mode t)
 (blink-cursor-mode t)
@@ -35,3 +36,4 @@
 
 (color-theme-initialize)
 (color-theme-deep-blue)
+

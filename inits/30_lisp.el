@@ -27,13 +27,14 @@
 (slime-setup '(slime-repl slime-fancy slime-banner))
 
 ;; key
-(define-key slime-repl-mode-map (kbd "M-s") 'forward-word)
-
 (defalias 'sl-restart 'slime-restart-inferior-Lisp)
 
 (require 'ac-slime)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+
+(define-key slime-repl-mode-map (kbd "M-s") 'forward-word)
+(require 'slime-annot)
 
 ;; Apropos
 (push '("*slime-apropos*") popwin:special-display-config)

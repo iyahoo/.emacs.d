@@ -44,4 +44,4 @@
 ;; (require 'ac-helm) ;; Not necessary if using ELPA package
 (global-set-key (kbd "M-p") 'ac-complete-with-helm)
 (define-key ac-complete-mode-map (kbd "M-p") 'ac-complete-with-helm)
-(setq ac-auto-show-menu nil)
+(setq ac-auto-show-menu t)

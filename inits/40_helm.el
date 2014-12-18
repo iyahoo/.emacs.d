@@ -3,6 +3,9 @@
 (require 'helm-config)
 (require 'helm-files)
 (require 'helm-ag)
+(require 'helm-c-yasnippet)
+(require 'helm-swoop)     
+
 ;;(define-key helm-parse-keys (kbd "C-h") )
 ;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
@@ -16,10 +19,13 @@
 (global-set-key (kbd "C-o") 'helm-occur)
 (global-set-key (kbd "C-c h") 'helm-mini)
 (global-set-key (kbd "C--") 'helm-c-yas-complete)
+(global-set-key (kbd "C-c s") 'helm-swoop)
+(global-set-key (kbd "C-c S") 'helm-multi-swoop)
+
+
 
 (defalias 'hg 'helm-do-grep)
 (defalias 'ht 'helm-etags-select)
 (defalias 'ha 'helm-ag)
 (defalias 'haf 'helm-ag-this-file)
 
-(require 'helm-c-yasnippet)

@@ -78,21 +78,21 @@
                 (setq skk-kutouten-type 'jp)))))
  
 ;; 動的な補完を使う
-(setq skk-dcomp-activate t)
+;; (setq skk-dcomp-activate t)
  
 ;; 動的補完の可否を判定するより高度な設定例
-(setq skk-dcomp-activate
-      #'(lambda ()
-          (and
-           ;; -nw では動的補完をしない。
-           window-system
-           ;; 基本的に行末のときのみ補完する。ただし行末でなくても現在の
-           ;; ポイントから行末までの文字が空白のみだったら補完する。
-           (or (eolp)
-               (looking-at "[ \t]+$")))))
+;; (setq skk-dcomp-activate
+;;       #'(lambda ()
+;;           (and
+;;            ;; -nw では動的補完をしない。
+;;            window-system
+;;            ;; 基本的に行末のときのみ補完する。ただし行末でなくても現在の
+;;            ;; ポイントから行末までの文字が空白のみだったら補完する。
+;;            (or (eolp)
+;;                (looking-at "[ \t]+$")))))
  
 ;; 動的補完で候補を複数表示する
-(setq skk-dcomp-multiple-activate t)
+;; (setq skk-dcomp-multiple-activate t)
  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;変換動作の調整
@@ -167,10 +167,9 @@
 (defvar skk-auto-save-jisyo-interval 600)
 (defun skk-auto-save-jisyo ()
   (skk-save-jisyo)
-  )
-(run-with-idle-timer skk-auto-save-jisyo-interval
-                     skk-auto-save-jisyo-interval
-                     'skk-auto-save-jisyo)
+  (run-with-idle-timer skk-auto-save-jisyo-interval
+                       skk-auto-save-jisyo-interval
+                       'skk-auto-save-jisyo))
  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;その他いろいろ

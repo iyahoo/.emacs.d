@@ -22,6 +22,25 @@
              (key-combo-define-local (kbd "|") '(" | " "|"))
              (key-combo-define-local (kbd "|-") " |- ")))
 
+;; tuareg-interactive-mode-hook
+(add-hook 'tuareg-interactive-mode-hook
+          '(lambda ()
+             (key-combo-define-local (kbd "+") '(" + " " +. "))
+             (key-combo-define-local (kbd "-") '(" - " " -. "))
+             (key-combo-define-local (kbd "*") '(" * " " *. " " ** " ))
+             (key-combo-define-local (kbd "/") '(" / " " /. "))
+             (key-combo-define-local (kbd ">") '(" > " " -> "))
+             (key-combo-define-local (kbd "=") '(" = " "="))))
+
+(add-hook 'tuareg-mode-hook
+          '(lambda ()
+             (key-combo-define-local (kbd "+") '(" + " " +. "))
+             (key-combo-define-local (kbd "-") '(" - " " -. "))
+             (key-combo-define-local (kbd "*") '(" * " " *. " " ** " ))
+             (key-combo-define-local (kbd "/") '(" / " " /. "))
+             (key-combo-define-local (kbd ">") '(" > " " -> "))
+             (key-combo-define-local (kbd "=") '(" = " "="))))
+
 (add-hook 'haskell-mode-hook
           '(lambda ()
              (key-combo-define-local (kbd "=") '(" = " " == " " === " ))
@@ -46,75 +65,11 @@
              (key-combo-define-local (kbd ">") '("> " ">= " ">"))
              (key-combo-define-local (kbd "<") '("< " "<= " "<"))
              (key-combo-define-local (kbd ",") '("," ",@"))
-             (key-combo-define-local (kbd "'") '("'" "#'"))))
+             (key-combo-define-local (kbd "'") '("'" "#'" "#'(lambda ())"))))
 
-(add-hook 'slime-repl-mode-hook
-          '(lambda ()
-             (key-combo-define-local (kbd ",") '("," ",@"))
-             (key-combo-define-local (kbd "'") '("'" "#'"))))
-
-;; (setq key-combo-common-mode-hooks
-;;       '(coq-mode-hook
-;;         ruby-mode-hook
-;;         haskell-mode-hook
-;;         inferior-haskell-mode-hook        
-;;         ))
-
-;; (setq key-combo-common-default
-;;       '((","  . (", " ","))
-;;         ("="  . (" = " " == " " === " "="))
-;;         ("=>" . " => ")
-;;         ("=~" . " =~ ")
-;;         ("=*" . " =* ")
-;;         ("+"  . (" + " " += " "+"))
-;;         ("+=" . " += ")
-;;         ("-"  . (" - " " -= " "-"))
-;;         ("-=" . " -= ")
-;;         ("->" . " -> ")
-;;         (">"  . (" > " " => " " >= " ">"))
-;;         (">=" . " >= ")
-;;         ("%"  . (" % " " %= " "%"))
-;;         ("%="  . " %= ")
-;;         ("!" . (" != " " !~ " "!"))
-;;         ("!="  . " != " )
-;;         ("!~" . " !~ ")
-;;         ("~" . (" =~ " "~"))
-;;         ("::" . " :: ")
-;;         ("&"  . (" & " " && " "&"))
-;;         ("&=" . " &= ")
-;;         ("&&=" . " &&= ")
-;;         ("*"  . (" * " "**" "*"))
-;;         ("*="  . " *= " )
-;;         ("<" . (" < " " <= " "<"))
-;;         ("<=" . " <= ")
-;;         ("<<=" . " <<= ")
-;;         ("<-" . " <- ")
-;;         ("|"  . (" ||= " " || " "|"))
-;;         ("|=" . " |= ")
-;;         ("||=" . " ||= ")
-;;         ("/" . ("/`!!'/" " / " "// "))
-;;         ("/=" . " /= ")
-;;         ("/*" . "/* `!!' */")
-;;         ("{" . ("{`!!'}" "{"))
-;;         ("{|" . "{ |`!!'|  }")
-;;         ("\"" . ("\"`!!'\"" "\""))
-;;         ("'" . ("'`!!''" "'"))
-;;         ("(" . ("(`!!')" "("))))
-
-;; (add-hook 'haskell-mode-hook
+;; error
+;; (add-hook 'slime-repl-mode-hook
 ;;           '(lambda ()
-;;              (key-combo-define-local (kbd "-") '("-" " -> " "--"))
-;;              (key-combo-define-local (kbd "<") '("<" " <- " " <= " " =<< " "<<" "<"))
-;;              (key-combo-define-local (kbd ">") '(">" " >= " " >>= " ">"))
-;;              (key-combo-define-local (kbd "=") '("=" " = " " == " "=="))
-;;              (key-combo-define-local (kbd ":") '(":" " :: " "::"))
-;;              ))
+;;              (key-combo-define-local (kbd ",") '("," ",@"))
+;;              (key-combo-define-local (kbd "'") '("'" "#'"))))
 
-;; (add-hook 'coq-mode-hook
-;;           '(lambda ()
-;;              (key-combo-define-local (kbd "-") '("-" " -> " "--"))
-;;              (key-combo-define-local (kbd "<") '("<" " <- " " <= " " =<< " "<<" "<"))
-;;              (key-combo-define-local (kbd ">") '(">" " >= " " >>= " ">"))
-;;              (key-combo-define-local (kbd "=") '("=" " = " " == " "=="))
-;;              (key-combo-define-local (kbd ":") '(":" " :: " "::"))
-;;              ))

@@ -22,3 +22,5 @@
 (setq require-final-newline t)
 
 (define-key global-map "\C-q" (make-sparse-keymap))
+
+;; (setq debug-on-error t)

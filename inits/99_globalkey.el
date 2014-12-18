@@ -2,7 +2,7 @@
 
 (global-set-key (kbd "C-s") 'forward-char)
 
-(global-set-key (kbd "C-f") 'helm-occur)
+(global-set-key (kbd "C-f") 'isearch-forward)
 
 (global-set-key (kbd "M-s") 'forward-word)
 

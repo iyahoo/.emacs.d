@@ -14,8 +14,8 @@
 (setq read-buffer-function 'iswitchb-read-buffer)
 
 (defadvice abort-recursive-edit (before minibuffer-save)
-  (when (when (eq (selected-windowo) (active-minibuffer-window))
-		  (add-to-history minibuffer-history-variable (minibuffer-contents)))))
+  (when (when (eq (selected-window) (active-minibuffer-window))
+          (add-to-history minibuffer-history-variable (minibuffer-contents)))))
 
 (defun my-window-resizer ()
   "Control window size and position."
@@ -24,9 +24,9 @@
         (current-width (window-width))
         (current-height (window-height))
         (dx (if (= (nth 0 (window-edges)) 0) 1
-              -1))
+                -1))
         (dy (if (= (nth 1 (window-edges)) 0) 1
-              -1))
+                -1))
         c)
     (catch 'end-flag
       (while t
@@ -50,19 +50,19 @@
   (interactive "p")
   (if (= num_wins 2)
       (split-window-vertically)
-    (progn
-      (split-window-vertically
-       (- (window-height) (/ (window-height) num_wins)))
-      (split-window-vertically-n (- num_wins 1)))))
+      (progn
+       (split-window-vertically
+        (- (window-height) (/ (window-height) num_wins)))
+       (split-window-vertically-n (- num_wins 1)))))
 
 (defun split-window-horizontally-n (num_wins)
   (interactive "p")
   (if (= num_wins 2)
       (split-window-horizontally)
-    (progn
-      (split-window-horizontally
-       (- (window-width) (/ (window-width) num_wins)))
-      (split-window-horizontally-n (- num_wins 1)))))
+      (progn
+       (split-window-horizontally
+        (- (window-width) (/ (window-width) num_wins)))
+       (split-window-horizontally-n (- num_wins 1)))))
 
 (global-set-key "\C-x@" '(lambda ()
                            (interactive)
@@ -76,11 +76,11 @@
 (defadvice isearch-mode (around isearch-mode-default-string (forward &optional regexp op-fun recursive-edit word-p) activate)
   (if (and transient-mark-mode mark-active (not (eq (mark) (point))))
       (progn
-        (isearch-update-ring (buffer-substring-no-properties (mark) (point)))
-        (deactivate-mark)
-        ad-do-it
-        (if (not forward)
-            (isearch-repeat-backward)
-          (goto-char (mark))
-          (isearch-repeat-forward)))
-    ad-do-it))
+       (isearch-update-ring (buffer-substring-no-properties (mark) (point)))
+       (deactivate-mark)
+       ad-do-it
+       (if (not forward)
+           (isearch-repeat-backward)
+           (goto-char (mark))
+           (isearch-repeat-forward)))
+      ad-do-it))

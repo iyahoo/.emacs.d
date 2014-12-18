@@ -8,6 +8,7 @@
 (add-hook 'prolog-mode-hook 'acm)
 (add-hook 'inferior-prolog-mode-hook 'acm)
 
+;; (setq prolog-program-name "/usr/local/bin/yap")
 (setq prolog-program-name "/opt/local/bin/swipl")
 
 

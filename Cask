@@ -78,3 +78,5 @@
 (depends-on "undo-tree")
 (depends-on "yasnippet")
 (depends-on "yaxception")
+(depends-on "slime-repl-ansi-color" :git "https://github.com/enriquefernandez/slime-repl-ansi-color.git")
+
