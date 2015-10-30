@@ -1,5 +1,4 @@
 (source gnu)
-(source marmalade)
 (source melpa)
 
 (depends-on "4clojure")
@@ -16,7 +15,6 @@
 (depends-on "caml")
 (depends-on "cask")
 (depends-on "color-theme")
-(depends-on "dash")
 (depends-on "dired+")
 (depends-on "elscreen")
 (depends-on "epl")
@@ -78,5 +76,6 @@
 (depends-on "undo-tree")
 (depends-on "yasnippet")
 (depends-on "yaxception")
+(depends-on "emacs-crystal-mode" :git "https://github.com/jpellerin/emacs-crystal-mode.git")
 (depends-on "slime-repl-ansi-color" :git "https://github.com/enriquefernandez/slime-repl-ansi-color.git")
-
+(depends-on "praat-mode" :url "https://github.com/aufrank/praat-utils/blob/master/emacs/praat-mode.el")

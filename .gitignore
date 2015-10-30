@@ -9,3 +9,14 @@ el-get/
 elisp/
 history
 snippets/
+elpa/
+elscreen
+ensime
+recentf
+request/
+tramp
+url/
+dict/
+.DS_Store
+.scratch
+

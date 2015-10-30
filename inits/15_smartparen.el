@@ -4,7 +4,7 @@
 (sp-pair "(" ")" :wrap "C-(")
 (sp-pair "{" "}" :wrap "C-{")
 (sp-pair "[" "]" :wrap "C-]")
-
+(sp-pair "\"" "\"" :wrap "C-\"")
 
 (sp-local-pair 'lisp-mode "~{" "~}")
 (sp-local-pair 'lisp-mode "~(" "~)")

@@ -1,1 +1,3 @@
-(add-hook 'dired-mode-hook 'turn-on-stripe-buffer-mode)
+;; (add-hook 'dired-mode-hook 'turn-off-stripe-buffer-mode)
+
+

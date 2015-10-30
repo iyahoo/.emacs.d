@@ -1,20 +1,26 @@
 (defface my-hl-line-face ;; 現在行のハイライト
   '((((class color) (background dark))
-     (:background "BLUE" t))
+     (:background "dark slate gray" t))
     (((class color) (background light))
-     (:background "LightGoldenrodYellow" t))
-    (t (:bold t)))
+     (:background "ForestGreen" t))
+    (t (:bold nil)))
   "hl-line's my face")
 
-(setq hl-line-face 'my-hl-line-face)
 (global-hl-line-mode t)
-(blink-cursor-mode t)
+
+;; (defun global-hl-line-timer-function ()
+;;   (global-hl-line-unhighlight-all)
+;;   (let ((global-hl-line-mode t))
+;;     (global-hl-line-highlight)))
+;; (setq global-hl-line-timer
+;;       (run-with-idle-timer 0.2 t 'global-hl-line-timer-function))
+;; (cancel-timer global-hl-line-timer)
 
 (setq show-paren-delay 0.024)  
 (show-paren-mode t)
 (setq show-paren-style 'parenthesis)
-(set-face-underline 'show-paren-match-face "yellow")
-(set-face-foreground 'show-paren-match-face nil)
+(set-face-underline 'show-paren-match-face nil)
+(set-face-foreground 'show-paren-match-face "pink")
 
 (scroll-bar-mode -1)
 
@@ -34,6 +40,29 @@
 
 (setq windmove-wrap-around t)
 
-(color-theme-initialize)
-(color-theme-deep-blue)
+(load-theme 'deeper-blue t)
+
+(setq make-pointer-invisible t)
+
+(defun my/scroll-move-around (orig-fn &rest args)
+  (let ((orig-line (count-lines (window-start) (point))))
+    (apply orig-fn args)
+    (move-to-window-line orig-line)))
+
+(advice-add 'scroll-up :around 'my/scroll-move-around)
+(advice-add 'scroll-down :around 'my/scroll-move-around)
+
+(global-set-key (kbd "C-M-h") 'hs-toggle-hiding)
+(global-set-key (kbd "C-q h") 'hs-hide-all)
+(global-set-key (kbd "C-q s") 'hs-show-all)
+
+(setq sr-speedbar-right-side nil)
+(global-set-key (kbd "C-q t") 'sr-speedbar-toggle)
+
+;; (hiwin-activate)
+;; (set-face-background 'hiwin-face "#262626")
+;; (set-face-background 'hiwin-face "#00103a")
+;; (set-face-background 'hiwin-face "#003845")
+
+(setq debug-on-error t)
 

@@ -1,12 +1,3 @@
-;; add-to-list -------------------------------------------------------
-
-;; (add-to-list 'load-path "~/.emacs.d")
-;; (require 'cl)
-;; (loop for f in (directory-files "~/.emacs.d" t)
-;;       when (and (file-directory-p f)
-;;                 (not (member (file-name-nondirectory f) '("." ".."))))
-;; 			do (add-to-list 'load-path f))
-
 (defun add-to-load-path (&rest paths) ; elisp内のファイルもパスを通す
   (let (path)
     (dolist (path paths paths)
@@ -17,29 +8,29 @@
                   (normal-top-level-add-subdirs-to-load-path))))))
 (add-to-load-path "elisp/" ".cask/")
 
-;; cask
-
 (cond
  ((string-match "apple-darwin" system-configuration)
-  (load "~/.emacs.d/etc/cocoa.el"))
- 
+  (load "~/.emacs.d/etc/cocoa.el")) 
  ((string-match "linux" system-configuration)
-  (load "~/.emacs.d/etc/linux.el"))
- 
+  (load "~/.emacs.d/etc/linux.el")) 
  ((string-match "freebsd" system-configuration)
   (load "~/.emacs.d/etc/freebsd.el")))
 
+;; cask
+(require 'cask)
+(cask-initialize)
+
+(add-to-list 'exec-path "/usr/local/bin")
+
 ;; init-loader
 (require 'init-loader)
-;; 設定ディレクトリ
 
 (cond ((not window-system))
 ;       (init-loader-load "~/.emacs.d/Inits_nw")
       ((window-system)
        (init-loader-load "~/.emacs.d/Inits")))
 
-;; ログファイル
-(setq init-loader-show-log-after-init nil)
+(setq init-loader-show-log-after-init 'error-only)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -54,6 +45,7 @@
  '(google-translate-default-target-language "ja")
  '(haskell-process-type (quote cabal-repl))
  '(haskell-program-name "cabal repl")
+ '(quack-smart-open-paren-p t)
  '(safe-local-variable-values (quote ((Syntax . Common-Lisp))))
  '(yas-trigger-key (kbd "TAB")))
 (custom-set-faces
@@ -61,4 +53,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(quack-pltish-defn-face ((t (:foreground "DarkGoldenrod2" :weight bold))))
+ '(quack-pltish-module-defn-face ((t (:inherit quack-pltish-defn-face :foreground "orange2"))))
+ '(quack-pltish-paren-face ((t (:foreground "salmon"))))
+ '(quack-pltish-selfeval-face ((t (:foreground "indian red")))))

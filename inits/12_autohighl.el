@@ -5,3 +5,7 @@
 
 (add-hook 'lisp-mode-hook 'auto-highlight-symbol-mode)
 (add-hook 'REPL 'auto-highlight-symbol-mode)
+(add-hook 'cider-mode-hook 'auto-highlight-symbol-mode)
+
+
+

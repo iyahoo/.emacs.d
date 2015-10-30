@@ -1,7 +1,4 @@
-(require 'skk-autoloads)
 (global-set-key "\C-\\" 'skk-mode)
-
-(require 'skk-setup)
 
 ;;コメント行を抜けたらasciiにする
 
@@ -26,6 +23,7 @@
 (add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
 (add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup)
  
+;; 
 ;; (when skk-use-color-cursor
 ;;   ;; カーソル色を変えてみる
 ;;   (setq skk-cursor-hiragana-color "LimeGreen"
@@ -68,16 +66,18 @@
 (setq skk-auto-insert-paren t)
  
 ;; 句読点を動的に決定する
-(add-hook 'skk-mode-hook
-          (lambda ()
-            (save-excursion
-              (goto-char 0)
-              (make-local-variable 'skk-kutouten-type)
-              (if (re-search-forward "。" 10000 t)
-                  (setq skk-kutouten-type 'en)
-                (setq skk-kutouten-type 'jp)))))
+;; (add-hook 'skk-mode-hook
+;;           (lambda ()
+;;             (save-excursion
+;;               (goto-char 0)
+;;               (make-local-variable 'skk-kutouten-type)
+;;               (if (re-search-forward "。" 10000 t)
+;;                   (setq skk-kutouten-type 'en)
+;;                 (setq skk-kutouten-type 'jp)))))
+
+(setq skk-kutouten-type 'en) ;; 
  
-;; 動的な補完を使う
+;; 動的な補完を使う 
 ;; (setq skk-dcomp-activate t)
  
 ;; 動的補完の可否を判定するより高度な設定例
@@ -153,7 +153,7 @@
 ;;                   '((skk-search-katakana))))
  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;辞書に関する設定
+;;辞書に関する設定 實は
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  
 ;; 辞書サーバを使うための設定
@@ -211,3 +211,5 @@
           ((and (<= ?0 c) (>= ?9 c)) ",")
           ((and (<= ?０ c) (>= ?９ c)) "，")
           (t "、"))))
+
+;; 

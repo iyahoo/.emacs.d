@@ -8,6 +8,7 @@
   t)
 ;; you can select the key you prefer to
 (define-key global-map (kbd "C-'") 'ace-jump-mode)
+(define-key global-map (kbd "C-M-'") 'ace-jump-char-mode)
 
 
 
@@ -28,7 +29,7 @@
 ;;If you use evil
 ;; (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
 
-
+;; ooooooooooooooooooooooooooo
 
 
 

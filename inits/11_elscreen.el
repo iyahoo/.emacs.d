@@ -5,8 +5,13 @@
 (global-set-key (kbd "M-T") 'elscreen-clone)
 (global-set-key (kbd "M-}") 'elscreen-next)
 (global-set-key (kbd "M-{") 'elscreen-previous)
+
 (global-set-key [(C-tab)] 'elscreen-next)
 (global-set-key [(C-S-tab)] 'elscreen-previous)
+
+(global-set-key (kbd "C-q C-c C-c s") 'elscreen-persist-store)
+(global-set-key (kbd "C-q C-c r") 'elscreen-persist-restore)
+
 
 (defmacro elscreen-create-automatically (ad-do-it)
   `(if (not (elscreen-one-screen-p))
