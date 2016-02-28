@@ -9,12 +9,12 @@
 (add-to-load-path "elisp/" ".cask/")
 
 (cond
- ((string-match "apple-darwin" system-configuration)
-  (load "~/.emacs.d/etc/cocoa.el")) 
- ((string-match "linux" system-configuration)
-  (load "~/.emacs.d/etc/linux.el")) 
- ((string-match "freebsd" system-configuration)
-  (load "~/.emacs.d/etc/freebsd.el")))
+((string-match "apple-darwin" system-configuration)
+(load "~/.emacs.d/etc/cocoa.el")) 
+((string-match "linux" system-configuration)
+(load "~/.emacs.d/etc/linux.el")) 
+((string-match "freebsd" system-configuration)
+(load "~/.emacs.d/etc/freebsd.el")))
 
 ;; cask
 (require 'cask)

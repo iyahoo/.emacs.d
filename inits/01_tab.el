@@ -1,11 +1,15 @@
 (setq-default tab-width 4 indent-tabs-mode nil)
 
-
 (add-hook 'c-mode-hook
           '(lambda ()
              (setq tab-width 4)
              (setq indent-tabs-mode nil)
              (setq c-basic-offset 4)))
+
+(add-hook 'yatex-mode-hook
+          '(lambda ()
+             (setq tab-width 4)
+             (setq indent-tabs-mode nil)))
 
 ;; C++ style
 (add-hook 'c++-mode-hook
