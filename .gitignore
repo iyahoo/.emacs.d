@@ -19,4 +19,13 @@ url/
 dict/
 .DS_Store
 .scratch
-
+backup/
+abbrev_defs
+.mc-lists.el
+desktops/
+emojis/
+eshell/
+lisp/
+network-security.data
+opam-user-setup.el
+srecode-map.el

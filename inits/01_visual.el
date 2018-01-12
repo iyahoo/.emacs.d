@@ -6,17 +6,11 @@
     (t (:bold nil)))
   "hl-line's my face")
 
-(global-hl-line-mode t)
+(use-package hl-line
+  :config
+  (global-hl-line-mode t))
 
-;; (defun global-hl-line-timer-function ()
-;;   (global-hl-line-unhighlight-all)
-;;   (let ((global-hl-line-mode t))
-;;     (global-hl-line-highlight)))
-;; (setq global-hl-line-timer
-;;       (run-with-idle-timer 0.2 t 'global-hl-line-timer-function))
-;; (cancel-timer global-hl-line-timer)
-
-(setq show-paren-delay 0.024)  
+(setq show-paren-delay 0.024)
 (show-paren-mode t)
 (setq show-paren-style 'parenthesis)
 (set-face-underline 'show-paren-match-face nil)
@@ -44,6 +38,22 @@
 
 (setq make-pointer-invisible t)
 
+(setq show-trailing-whitespace t)
+
+(set-fill-column 9999)
+
+(font-lock-add-keywords nil
+                        '(("\\<\\(FIXME\\|TODO\\|QUESTION\\|NOTE\\)"
+                           1 font-lock-warning-face t)))
+
+;; (add-hook 'write-file-hooks
+;;           '(lambda()
+;;              (save-excursion
+;;                (delete-trailing-whitespace))
+;;              nil))
+
+(global-set-key (kbd "C-q C-d") 'delete-trailing-whitespace)
+
 (defun my/scroll-move-around (orig-fn &rest args)
   (let ((orig-line (count-lines (window-start) (point))))
     (apply orig-fn args)
@@ -66,3 +76,7 @@
 
 (setq debug-on-error t)
 
+(defun set-alpha (alpha-num)
+  "set frame parameter alpha"
+  (interactive "nAlpha: ")
+  (set-frame-parameter nil 'alpha (cons alpha-num '(90))))

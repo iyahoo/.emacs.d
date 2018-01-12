@@ -1,3 +1,5 @@
-(setq auto-mode-alist
-      (cons (cons "\\.m$" 'octave-mode) auto-mode-alist))
+;; (define-key octave-mode-map (kbd "C-h") 'backward-delete-char)
+
+(setq octave-comment-char ?%
+      octave-block-offset 4)
 

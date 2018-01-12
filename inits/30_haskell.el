@@ -1,39 +1,58 @@
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;; (add-hook 'haskell-mode-hook 'font-lock-mode)
-;; (add-hook 'haskell-mode-hook 'imenu-add-menubar-index)
+(add-to-list 'exec-path "/Users/iyahoo/.stack/programs/x86_64-osx/ghc-8.0.1/bin")
+(add-to-list 'exec-path "~/.local/bin")
 
-;; (custom-set-variables
-;;  '(haskell-indent-after-keywords (quote (("where" 4 0) ("of" 4) ("do" 4) ("mdo" 4) ("rec" 4) ("in" 4 0) ("{" 4) "if" "then" "else" "let")))
-;;  '(haskell-indent-offset 4)
-;;  '(haskell-indent-spaces 4))
+(autoload 'haskell-mode "haskell-mode" nil t)
+(autoload 'haskell-cabal "haskell-cabal" nil t)
 
-;; ;; http://d.hatena.ne.jp/kitokitoki/20111217/p1
-;; ;; ghc-mod
-;; ;; cabal でインストールしたライブラリのコマンドが格納されている bin ディレクトリへのパスを exec-path に追加する
-;; (add-to-list 'exec-path (concat (getenv "HOME") "/.cabal/bin"))
+(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.lhs$" . literate-haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.cabal$" . haskell-cabal-mode))
 
-;; ;; ghc-flymake.el などがあるディレクトリ ghc-mod を ~/.emacs.d 以下で管理することにした
-;; (add-to-list 'load-path "~/.emacs.d/ghc-mod")
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
 
-;; (autoload 'ghc-init "ghc" nil t)
-;; (autoload 'ghc-debug "ghc" nil t)
-;; (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+(add-to-list 'company-backends 'company-ghc)
 
-;; ;; ;; https://github.com/m2ym/auto-complete
-;; (ac-define-source ghc-mod
-;;   '((depends ghc)
-;;     (candidates . (ghc-select-completion-symbol))
-;;     (symbol . "s")
-;;     (cache)))
+;; align
+;; (add-to-list 'align-rules-list
+;;              '(haskell-types
+;;                (regexp . "\\(\\s-+\\)\\(::\\|∷\\)\\s-+")
+;;                (modes quote (haskell-mode literate-haskell-mode))))
+;; (add-to-list 'align-rules-list
+;;              '(haskell-assignment
+;;                (regexp . "\\(\\s-+\\)=\\s-+")
+;;                (modes quote (haskell-mode literate-haskell-mode))))
+;; (add-to-list 'align-rules-list
+;;              '(haskell-arrows
+;;                (regexp . "\\(\\s-+\\)\\(->\\|→\\)\\s-+")
+;;                (modes quote (haskell-mode literate-haskell-mode))))
+;; (add-to-list 'align-rules-list
+;;              '(haskell-left-arrows
+;;                (regexp . "\\(\\s-+\\)\\(<-\\|←\\)\\s-+")
+;;                (modes quote (haskell-mode literate-haskell-mode))))
 
-;; (defun my-ac-haskell-mode ()
-;;   (setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-dictionary ac-source-ghc-mod)))
-;; (add-hook 'haskell-mode-hook 'my-ac-haskell-mode)
+(defun my-haskell-mode-hook ()
+    (interactive)
+    ;; インデント
+    (turn-on-haskell-indentation)
+    (turn-on-haskell-doc-mode)
+    (font-lock-mode)
+    (imenu-add-menubar-index)
+    ;; GHCi のコマンドを設定
+    (custom-set-variables
+     '(haskell-process-type 'stack-ghci))    
+    (setq haskell-program-name "/usr/local/bin/stack ghci")
+    ;; stack の場合
+    ;; Key
 
-;; (defun my-haskell-ac-init ()
-;;   (when (member (file-name-extension buffer-file-name) '("hs" "lhs"))
-;;     (auto-complete-mode t)
-;;     (setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-dictionary ac-source-ghc-mod))))
-
-;; (add-hook 'find-file-hook 'my-haskell-ac-init)
+    (inf-haskell-mode)
+    ;; ghc-mod を使えるように
+    (ghc-init)
+    ;; flycheck を起動
+    (flycheck-mode)
+    (define-key haskell-mode-map (kbd "M-s") 'forward-word)
+    (define-key haskell-mode-map (kbd "M-y") 'helm-show-kill-ring)
+    (define-key haskell-mode-map (kbd "C-x a r") 'align-regexp)
+    (define-key haskell-mode-map (kbd "C-c a") 'align)
+    (define-key interactive-haskell-mode-map (kbd "C-c C-t") 'haskell-mode-show-type-at))
+(add-hook 'haskell-mode-hook 'my-haskell-mode-hook)

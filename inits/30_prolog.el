@@ -1,10 +1,10 @@
 ; for SWI-Prolog
 (setq prolog-system 'swi)
 (setq auto-mode-alist
-      (append '(("\\.pl" . prolog-mode))
-              '(("\\.b" . prolog-mode))
-              '(("\\.n" . prolog-mode))
-              '(("\\.f" . prolog-mode))
+      (append '(("\\.pl$" . prolog-mode))
+              '(("\\.b$" . prolog-mode))
+              '(("\\.n$" . prolog-mode))
+              '(("\\.f$" . prolog-mode))
               auto-mode-alist))
 
 (add-hook 'prolog-mode-hook 'auto-highlight-symbol-mode)

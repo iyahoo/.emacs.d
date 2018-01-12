@@ -1,7 +1,7 @@
-(global-undo-tree-mode)
+;; (global-undo-tree-mode)
 
-(require 'undo-tree)
-(global-set-key (kbd "C-_") 'undo-tree)
+;; (require 'undo-tree)
+;; (global-set-key (kbd "C-_") 'undo-tree)
 
 (require 'redo+)
 (global-set-key (kbd "C-M-/") 'redo)

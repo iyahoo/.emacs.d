@@ -3,6 +3,8 @@
   (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 
+
+
 ;; YaTeX が利用する内部コマンドを定義する
 (setq tex-command "/usr/local/bin/platex2pdf") ;; 自作したコマンドを
 (cond

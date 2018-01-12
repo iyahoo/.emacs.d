@@ -1,9 +1,10 @@
 (when (memq window-system '(mac ns))
   (global-set-key [s-mouse-1] 'browse-url-at-mouse)
-  (let* ((size 17)
+  (let* ((size 18)
          (jpfont "Hiragino Maru Gothic ProN")
-         (asciifont "Menlo")
-         (h (* size 7)))
+         ;; (asciifont "Menlo")
+         (asciifont "Fira Code")
+         (h (* size 8)))
     (set-face-attribute 'default nil :family asciifont :height h)
     (set-fontset-font t 'katakana-jisx0201 jpfont)
     (set-fontset-font t 'japanese-jisx0208 jpfont)
@@ -20,6 +21,10 @@
           (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
           (".*monaco-bold-.*-mac-roman" . 0.9) ;
           ("-cdac$" . 1.3))))
+
+(set-fontset-font t 'unicode "Symbola" nil 'prepend)
+(set-fontset-font t 'cyrillic "Droid Sans Mono")
+;; 
 
 (defun scroll-down-with-lines ()
   "" (interactive) (scroll-down 3))

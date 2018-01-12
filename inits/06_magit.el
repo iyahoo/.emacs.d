@@ -1,4 +1,8 @@
-(setq magit-auto-revert-mode nil)
-(setq magit-last-seen-setup-instructions "1.4.0")
+(use-package magit
+  ;;:bind (([C-tab] . elscreen-next))
+  :config
+  (setq magit-auto-revert-mode nil)  
+  (defalias 'ms 'magit-status)
+  (define-key magit-mode-map [C-tab] 'elscreen-next))
 
-(defalias 'ms 'magit-status)
+

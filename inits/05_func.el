@@ -1,10 +1,7 @@
 (setq kill-whole-line t)
 
 (setq delete-auto-save-files t)
-
-(setq visible-bell t) ;;stop bell
-(setq ring-bell-function nil)
-
+(setq ring-bell-function 'ignore)
 (savehist-mode)
 
 (ffap-bindings)
@@ -84,3 +81,8 @@
            (goto-char (mark))
            (isearch-repeat-forward)))
       ad-do-it))
+
+
+(eval-after-load "dired-aux"
+   '(add-to-list 'dired-compress-file-suffixes 
+                 '("\\.zip\\'" ".zip" "unzip")))
