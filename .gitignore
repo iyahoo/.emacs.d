@@ -25,7 +25,8 @@ abbrev_defs
 desktops/
 emojis/
 eshell/
-lisp/
+lisp/PG
 network-security.data
 opam-user-setup.el
 srecode-map.el
+seagle_emacs.d

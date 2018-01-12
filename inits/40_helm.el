@@ -1,37 +1,30 @@
-;;; helm ------------------------------------------------------------
-
-;;(define-key helm-parse-keys (kbd "C-h") )
-;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-(require 'helm-mode)
-;; (require 'helm-config)
-;; (require 'helm-files)
-;; (require 'helm-ag)
-;; (require 'helm-c-yasnippet)
-;; (require 'helm-swoop)
-;; (require 'helm-migemo)
-
-;;(define-key helm-parse-keys (kbd "C-h") )
-;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(define-key helm-map (kbd "C-h") 'delete-backward-char)
-(define-key helm-generic-files-map (kbd "C-h") 'delete-backward-char)
-(define-key isearch-mode-map (kbd "C-o") 'helm-occur-from-isearch)
-
-(setq recentf-max-saved-items 10000)
-(setq kill-ring-max 1000)
-
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-o") 'helm-swoop)
-(global-set-key (kbd "C-c o") 'helm-multi-swoop)
-(global-set-key (kbd "C-c h") 'helm-mini)
-(global-set-key (kbd "C-c -") 'helm-c-yas-complete)
-(global-set-key (kbd "C-c s") 'helm-imenu)
-(define-key company-mode-map (kbd "C--") 'helm-company)
-
-;; (define-key company-active-map (kbd "C--") 'helm-company)
-
 (defalias 'hg 'helm-do-grep)
 (defalias 'ht 'helm-etags-select)
 (defalias 'ha 'helm-ag)
 (defalias 'haf 'helm-ag-this-file)
+(setq recentf-max-saved-items 10000)
+(setq kill-ring-max 1000)
+
+(bind-keys* ("M-y" . helm-show-kill-ring)
+            ("M-x" . helm-M-x)
+            ("C-o" . helm-swoop)
+            ("C-c o" . helm-multi-swoop)
+            ("C-c h" . helm-mini)
+            ("C-c -" . helm-c-yas-complete)
+            ("C-c s" . helm-imenu)
+            ("C--" . helm-company))
+
+(use-package helm-mode
+  :commands (helm-occur-from-isearch
+             helm-show-kill-ring
+             helm-M-x
+             helm-swoop
+             helm-multi-swoop
+             helm-mini
+             helm-c-yas-complete
+             helm-imenu
+             helm-company
+             helm-do-grep
+             helm-etags-select
+             helm-ag
+             helm-ag-this-file))

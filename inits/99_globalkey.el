@@ -1,6 +1,4 @@
-;; コマンドエイリアス
-
-;; 空白を削除
+;; alias
 (defalias 'dtw 'delete-trailing-whitespace)
 (defalias 'exit 'save-buffers-kill-emacs)
 (defalias 'al 'align)
@@ -12,5 +10,4 @@
 
 ;; quicrun
 (global-set-key (kbd "C-x C-c") 'quickrun)
-(defalias 'qr 'quickrun-region)
 (defalias 'qwa 'quickrun-with-arg)

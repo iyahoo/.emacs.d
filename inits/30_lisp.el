@@ -36,7 +36,8 @@
 (defalias 'sl-restart 'slime-restart-inferior-Lisp)
 (define-key slime-repl-mode-map (kbd "M-s") 'forward-word)
 
-(use-package slime-annot)
+(use-package slime-annot
+  :disabled t)
 
 (setq slime-net-coding-system 'utf-8-unix)
 (setq lisp-lambda-list-keyword-parameter-alignment t)

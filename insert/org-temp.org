@@ -1,8 +1,0 @@
-#+TITLE: 
-#+AUTHOR: 
-#+EMAIL: 
-#+LANGUAGE: ja
-#+OPTIONS: toc:nil num:nil author:nil creator:nil LaTeX:t \n:t timestamp:nil d:nil d:nil ^:{}
-#+STYLE: <link rel="stylesheet" type="text/css" href="my_bootstrap.css">
-#+MACRO: 
-#+STARTUP: indent

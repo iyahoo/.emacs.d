@@ -1,58 +1,55 @@
-(defface my-hl-line-face ;; 現在行のハイライト
-  '((((class color) (background dark))
-     (:background "dark slate gray" t))
-    (((class color) (background light))
-     (:background "ForestGreen" t))
-    (t (:bold nil)))
-  "hl-line's my face")
-
 (use-package hl-line
   :config
   (global-hl-line-mode t))
 
-(setq show-paren-delay 0.024)
+;; Show paren
+(setq show-paren-delay 0.02)
 (show-paren-mode t)
 (setq show-paren-style 'parenthesis)
 (set-face-underline 'show-paren-match-face nil)
 (set-face-foreground 'show-paren-match-face "pink")
 
+;; Global visual setting
 (scroll-bar-mode -1)
-
 (tool-bar-mode -1)
-
 (blink-cursor-mode 0)
-
-(setq frame-title-format "%f")
-
 (column-number-mode t)
-
 (size-indication-mode t)
-
-(setq inhibit-startup-message t)
-
 (fset 'yes-or-no-p 'y-or-n-p)
-
-(setq windmove-wrap-around t)
-
-(load-theme 'deeper-blue t)
-
-(setq make-pointer-invisible t)
-
-(setq show-trailing-whitespace t)
-
 (set-fill-column 9999)
 
-(font-lock-add-keywords nil
-                        '(("\\<\\(FIXME\\|TODO\\|QUESTION\\|NOTE\\)"
-                           1 font-lock-warning-face t)))
+(setq inhibit-startup-message t)
+(setq windmove-wrap-around t)
+(setq make-pointer-invisible t)
+(setq frame-title-format "%f")
+(setq show-trailing-whitespace t)
 
-;; (add-hook 'write-file-hooks
-;;           '(lambda()
-;;              (save-excursion
-;;                (delete-trailing-whitespace))
-;;              nil))
+;; Load theme
+(load-theme 'deeper-blue t)
 
-(global-set-key (kbd "C-q C-d") 'delete-trailing-whitespace)
+(defconst macp (eq system-type 'darwin))
+
+;; Font
+(cond (macp
+       (let* ((size 17)
+              (jpfont "Hiragino Maru Gothic ProN")
+              (asciifont "Fira Code")
+              (h (* size 8)))
+         (set-face-attribute 'default nil :family asciifont :height h)
+         (set-fontset-font t 'katakana-jisx0201 jpfont)
+         (set-fontset-font t 'japanese-jisx0208 jpfont)
+         (set-fontset-font t 'japanese-jisx0212 jpfont)
+         (set-fontset-font t 'japanese-jisx0213-1 jpfont)
+         (set-fontset-font t 'japanese-jisx0213-2 jpfont)
+         (set-fontset-font t '(#x0080 . #x024F) asciifont)
+         (set-fontset-font t 'unicode "Symbola" nil 'prepend)
+         (set-fontset-font t 'cyrillic "Droid Sans Mono"))))
+
+;; Emphasis string
+(font-lock-add-keywords
+ nil
+ '(("\\<\\(FIXME\\|TODO\\|QUESTION\\|NOTE\\)"
+    1 font-lock-warning-face t)))
 
 (defun my/scroll-move-around (orig-fn &rest args)
   (let ((orig-line (count-lines (window-start) (point))))
@@ -66,17 +63,28 @@
 (global-set-key (kbd "C-q h") 'hs-hide-all)
 (global-set-key (kbd "C-q s") 'hs-show-all)
 
+;; Speedbar
 (setq sr-speedbar-right-side nil)
 (global-set-key (kbd "C-q t") 'sr-speedbar-toggle)
-
-;; (hiwin-activate)
-;; (set-face-background 'hiwin-face "#262626")
-;; (set-face-background 'hiwin-face "#00103a")
-;; (set-face-background 'hiwin-face "#003845")
-
-(setq debug-on-error t)
 
 (defun set-alpha (alpha-num)
   "set frame parameter alpha"
   (interactive "nAlpha: ")
   (set-frame-parameter nil 'alpha (cons alpha-num '(90))))
+
+;; Track pad
+(defun scroll-down-with-lines ()
+  (interactive)
+  (scroll-down 3))
+
+(defun scroll-up-with-lines ()
+  (interactive)
+  (scroll-up 3))
+
+(cond (macp
+       (bind-keys ([wheel-up] . scroll-down-with-lines)
+                  ([wheel-down] . scroll-up-with-lines)
+                  ([double-wheel-up] . scroll-down-with-lines)
+                  ([double-wheel-down] . scroll-up-with-lines)
+                  ([triple-wheel-up] . scroll-down-with-lines)
+                  ([triple-wheel-down] . scroll-up-with-lines))))

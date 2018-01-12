@@ -1,82 +1,71 @@
-;; auto-byte-compile
-;; (require 'auto-async-byte-compile)
-;; (setq auto-async-byte-compile-exclude-files-regexp "/junk/")
+;; Initialize bind  keys
+(defconst sparse-key "C-q")
+(bind-key sparse-key (make-sparse-keymap))
 
-;; (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
-(setq auto-async-byte-compile-display-function nil)
-
-
-;; Initialize keys
-(define-key global-map "\C-q" (make-sparse-keymap))
+(defun sparse-key+ (key)
+  (concat sparse-key " " key))
 
 ;;; key --------------------------------------------------------------
-
-(global-set-key (kbd "C-s") 'forward-char)
-(global-set-key (kbd "C-f") 'isearch-forward)
-(global-set-key (kbd "M-s") 'forward-word)
-(global-set-key (kbd "C-M-s") 'forward-sexp)
-(global-set-key (kbd "M-g") 'goto-line)
-(global-set-key (kbd "C-M-p") (lambda () (interactive) (scroll-up 1)))
-(global-set-key (kbd "C-M-n") (lambda () (interactive) (scroll-down 1)))
-
-(define-key global-map (kbd "C-c l") 'toggle-truncate-lines) ;;折り返しトグルコマンド
-
-(global-set-key (kbd "C-x a r") 'align-regexp)
-(global-set-key (kbd "C-c a") 'align)
-
-(setq default-tab-width 2) ;; tab = 4space
-(setq indent-line-function 'indent-relative-maybe)
-
-;;commandkeyをメタに
-(setq ns-command-modifier 'meta)
-
-;; (setq ns-function-modifier 'hyper)
-(setq ns-alternate-modifier 'super)
-
-;;C-hをバックスペースに
-(global-set-key (kbd "C-h") 'backward-delete-char)
-;; M-hで単語削除
-(global-set-key (kbd "M-h") 'backward-kill-word)
-
-(define-key isearch-mode-map (kbd "C-h") 'isearch-delete-char)
-;; (define-key isearch-mode-map (kbd "M-h") 'isearc)
-;;C-mにnewline-and-indentを割り当て
-(global-set-key (kbd "C-m") 'newline-and-indent)
-
-;;"C-t"でウィンドウを切り替える,ウィンドウがひとつなら新たに作成し、
-;;そちらのウィンドウに移動するウィンドウに移動する
 (defun other-window-or-split ()
   (interactive)
-  (when (one-window-p) (split-window-horizontally))
+  (when (one-window-p)
+    (split-window-horizontally))
   (other-window 1))
 
-(global-set-key (kbd "C-t") 'other-window-or-split)
+(bind-keys* ;; force
+ ;; Move cursol
+ ("C-s" . forward-char)
+ ("C-f" . isearch-forward)
+ ("M-s" . forward-word)
+ ("C-M-s" . forward-sexp)
+ ("M-g" . goto-line)
+ ("C-M-p" . (lambda () (interactive) (scroll-up 1)))
+ ("C-M-n" . (lambda () (interactive) (scroll-down 1)))
 
-;; dired
+ ;; Move window
+ ("C-t" . other-window-or-split)
+ ((sparse-key+ "C-r") . my-window-resizer)
 
-;; 単一ウィンドウに戻すのを Ctrl-x Ctrl-1 で可能に
-;; 縦ウィンドウ分割を Ctrl-x Ctrl-2 で可能に
-;; 縦ウィンドウ分割を Ctrl-x Ctrl-3 で可能に
-;; Ctrl-x Ctrl-d でも  を起動する
+ ;; delete
+ ("C-h" . backward-delete-char)
+ ("M-h" . backward-kill-word)
+ ((sparse-key+ "C-d") . (lambda ()
+                          (interactive)
+                          (delete-trailing-whitespace)
+                          (message "Delete tailing whitespace!")))
+ ;; toggle
+ ("C-c l" . toggle-truncate-lines)
 
-(global-set-key (kbd "C-x C-d") 'dired-toggle)
+ ;; Dired
+ ("C-x C-d" . dired-toggle)
 
+ ;; C++
+ ([f11] . ac-clang-syntax-check)
+  
+ ;; Eval buffer
+ ([f12] . (lambda ()
+            (interactive)
+            (progn 
+              (eval-buffer)
+              (message "eval-buffer"))))
+ 
+ ;; special
+ ((sparse-key+ "C-q") . quoted-insert))
 
-;; quoted-insert は C-q C-q へ割り当て
-(global-set-key "\C-q\C-q" 'quoted-insert)
+(bind-keys
+ ;; align-regexp
+ ("C-x a r" . align-regexp)
+ ("C-c a" . align)
+ 
+ ;; Newline
+ ("C-m" . newline-and-indent))
 
-;; window-resizer は C-q C-r (resize) で
-(global-set-key "\C-q\C-r" 'my-window-resizer)
+;; Config
+(setq default-tab-width 4)
+(setq indent-line-function 'indent-relative-maybe)
+(setq ns-command-modifier 'meta)
+(setq ns-alternate-modifier 'super)
+(setq debug-on-error t)
 
-;; C-q C-fbnpでウィンドウ移動
-(global-set-key (kbd "C-q C-f") 'windmove-right)
-(global-set-key (kbd "C-q C-b") 'windmove-left)
-(global-set-key (kbd "C-q C-n") 'windmove-down)
-(global-set-key (kbd "C-q C-p") 'windmove-up)
-
-(global-set-key (kbd "H-n") 'sort-numeric-fields)
-(global-set-key (kbd "H-f") 'sort-fields)
-
-(global-set-key [f12] 'eval-buffer)
-(global-set-key [f11] 'ac-clang-syntax-check)
+;;
 
