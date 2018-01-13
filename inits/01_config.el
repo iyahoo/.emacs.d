@@ -20,9 +20,9 @@
 (set-fill-column       9999)
 (iswitchb-mode         t)
 
-(setq-default indent-tabs-mode nil
-              default-tab-width 4
-              make-pointer-invisible t
+(setq-default indent-tabs-mode         nil
+              default-tab-width        4
+              make-pointer-invisible   t
               show-trailing-whitespace t
               kill-whole-line          t
               delete-auto-save-files   t
@@ -86,6 +86,12 @@
 ;; サイズテスト
 ;; saiizutesuto
 
+(defun set-alpha (alpha-num)
+  "set frame parameter alpha"
+  (interactive "nAlpha: ")
+  (set-frame-parameter nil 'alpha (cons alpha-num '(90))))
+
+;; Track pad
 (defun my/scroll-move-around (orig-fn &rest args)
   (let ((orig-line (count-lines (window-start) (point))))
     (apply orig-fn args)
@@ -94,20 +100,6 @@
 (advice-add 'scroll-up :around 'my/scroll-move-around)
 (advice-add 'scroll-down :around 'my/scroll-move-around)
 
-(global-set-key (kbd "C-M-h") 'hs-toggle-hiding)
-(global-set-key (kbd "C-q h") 'hs-hide-all)
-(global-set-key (kbd "C-q s") 'hs-show-all)
-
-;; Speedbar
-(setq sr-speedbar-right-side nil)
-(global-set-key (kbd "C-q t") 'sr-speedbar-toggle)
-
-(defun set-alpha (alpha-num)
-  "set frame parameter alpha"
-  (interactive "nAlpha: ")
-  (set-frame-parameter nil 'alpha (cons alpha-num '(90))))
-
-;; Track pad
 (defun scroll-down-with-lines ()
   (interactive)
   (scroll-down 3))
@@ -127,11 +119,6 @@
 (defadvice abort-recursive-edit (before minibuffer-save)
   (when (when (eq (selected-window) (active-minibuffer-window))
           (add-to-history minibuffer-history-variable (minibuffer-contents)))))
-
-;; Cmpression file
-(eval-after-load "dired-aux"
-  '(add-to-list 'dired-compress-file-suffixes
-                '("\\.zip\\'" ".zip" "unzip")))
 
 ;; Trash
 (setq delete-by-moving-to-trash t)
