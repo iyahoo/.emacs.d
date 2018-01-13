@@ -1,14 +1,13 @@
-;; elscreen
 (defmacro elscreen-create-automatically (ad-do-it)
   `(if (not (elscreen-one-screen-p))
        ,ad-do-it
      (elscreen-create)
      (elscreen-notify-screen-modification 'force-immediately)
      (elscreen-message "New screen is automatically created")))
- 
+
 (defadvice elscreen-next (around elscreen-create-automatically activate)
   (elscreen-create-automatically ad-do-it))
- 
+
 (defadvice elscreen-previous (around elscreen-create-automatically activate)
   (elscreen-create-automatically ad-do-it))
 
@@ -30,18 +29,17 @@
     (setq frame-title-format title)))))
 
 (use-package elscreen
- :init
- (elscreen-start)
- :bind (("M-t" . elscreen-create)
-        ("M-T" . elscreen-clone)
-        ("M-}" . elscreen-next)
-        ("M-{" . elscreen-previous)
-        ([C-tab] . elscreen-next)
-        ([C-S-tab] . elscreen-previous)
-        ("C-q C-c C-c s" . elscreen-persist-store)
-        ("C-q C-c r" . elscreen-persist-restore)))
-
-
- 
-;; (eval-after-load "elscreen"
-;;   '(add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update))
+  :init
+  (elscreen-start)
+  :bind* (("M-t" . elscreen-create)
+          ("M-T" . elscreen-clone)
+          ("M-}" . elscreen-next)
+          ("M-{" . elscreen-previous)
+          ([C-tab] . elscreen-next)
+          ([C-S-tab] . elscreen-previous)
+          ("C-q C-s" . elscreen-persist-store)
+          ("C-q C-r" . elscreen-persist-restore)
+          ("C-z C-k" . elscreen-kill))
+  :config
+  (setq elscreen-tab-display-kill-screen nil
+        elscreen-tab-display-control nil))

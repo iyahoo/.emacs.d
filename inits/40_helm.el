@@ -2,17 +2,15 @@
 (defalias 'ht 'helm-etags-select)
 (defalias 'ha 'helm-ag)
 (defalias 'haf 'helm-ag-this-file)
-(setq recentf-max-saved-items 10000)
-(setq kill-ring-max 1000)
 
 (bind-keys* ("M-y" . helm-show-kill-ring)
             ("M-x" . helm-M-x)
             ("C-o" . helm-swoop)
+            ("C--" . helm-company)
             ("C-c o" . helm-multi-swoop)
             ("C-c h" . helm-mini)
             ("C-c -" . helm-c-yas-complete)
-            ("C-c s" . helm-imenu)
-            ("C--" . helm-company))
+            ("C-c s" . helm-imenu))
 
 (use-package helm-mode
   :commands (helm-occur-from-isearch

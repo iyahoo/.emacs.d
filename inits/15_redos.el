@@ -1,14 +1,7 @@
-;; (global-undo-tree-mode)
+(use-package redo+
+  :bind (("C-M-/" . redo)))
 
-;; (require 'undo-tree)
-;; (global-set-key (kbd "C-_") 'undo-tree)
-
-(require 'redo+)
-(global-set-key (kbd "C-M-/") 'redo)
-
-(require 'point-undo)
-(define-key global-map (kbd "M-g") 'point-undo)
-(define-key global-map (kbd "S-<f7>") 'point-redo)
-
-(setq-default save-place t)
+(use-package point-undo
+  :bind (("<f7>" . point-undo)
+         ("C-<f7>" . point-redo)))
 

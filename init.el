@@ -1,18 +1,24 @@
 (when (version< emacs-version "24.4")
-  (error "This requires Emacs 24.4 and above!"))
+  (error "Your Emacs is too old!"))
 
-;; Optimize loading performance
-(defvar default-file-name-handler-alist file-name-handler-alist)
+(defconst macp (eq system-type 'darwin))
+(defconst linuxp (eq system-type 'gnu/linux))
+
+;; Optimize
 (setq file-name-handler-alist nil)
 (setq gc-cons-threshold 30000000)
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            "Restore defalut values after init"
-            (setq file-name-handler-alist default-file-name-handler-alist)
-            (setq gc-cons-threshold 800000)))
+
+;; My info
+(setq user-full-name "Tomoya Furukawa")
+(setq user-mail-address "s1200191@gmail.com")
 
 ;; cask
-(require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
+(cond (macp
+       (let ((cask-file-path "/usr/local/share/emacs/site-lisp/cask/cask.el"))
+         (if (file-exists-p cask-file-path)
+             (require 'cask cask-file-path)
+           (error "This init.el requires cask.")))))
+
 (cask-initialize)
 
 ;; Load path
@@ -20,9 +26,11 @@
 
 ;; use-package
 (require 'use-package)
+(setq use-package-enable-imenu-support t)
 
 ;; Package
 (defvar *mode* 'default)
+(setq *mode* 'full)
 
 (pcase *mode*
   ('default (setq package-archives
@@ -35,10 +43,22 @@
 
 (package-initialize)
 
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "PATH"))
+;; Paradox
+(use-package paradox
+  :config
+  (setq paradox-github-token t)
+  (setq paradox-execute-asynchronously t)
+  (setq paradox-automatically-star nil)
+  (setq paradox-display-star-count t))
 
+;; PATH
+(when (memq window-system '(mac ns x))
+  (use-package exec-path-from-shell
+    :init
+    (setq exec-path-from-shell-variables '("PATH" "MANPATH"))
+    (exec-path-from-shell-initialize)))
+
+;; pallet
 (use-package pallet
   :config
   (pallet-mode t))
@@ -50,35 +70,3 @@
   (cond ((not window-system))
         ((window-system)
          (init-loader-load "~/.emacs.d/Inits"))))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(anzu-deactivate-region t)
- '(anzu-mode-lighter "")
- '(anzu-replace-to-string-separator " => ")
- '(anzu-search-threshold 1000)
- '(google-translate-default-source-language "en")
- '(google-translate-default-target-language "ja")
- '(haskell-process-type (quote stack-ghci))
- '(haskell-program-name "cabal repl" t)
- '(package-selected-packages
-   (quote
-    (main-line esup racer rust-mode dired-toggle-sudo twittering-mode markdown-mode emoji-cheat-sheet-plus yaml-mode web-mode use-package undo-tree tern-auto-complete sr-speedbar smartscan smartparens slack shampoo scheme-complete redo+ rainbow-delimiters quickrun quack py-gnitset point-undo paredit pandoc-mode pallet package-utils newlisp-mode mwim multiple-cursors matlab-mode magit key-combo jump julia-shell init-loader image+ ido-skk hlinum hiwin hindent helm-swoop helm-descbinds helm-company helm-c-yasnippet helm-anything helm-ag haskell-tab-indent graphviz-dot-mode google-translate gnuplot-mode ghc-imported-from expand-region exec-path-from-shell ess-R-data-view ensime elscreen eldoc-extension eimp easy-kill direx dired-toggle dash-functional dash-at-point company-ghc company-coq chicken-scheme bibtex-utils autopair auto-highlight-symbol auto-complete-clang-async auto-async-byte-compile anzu ac-slime ac-js2 ac-helm 4clojure)))
- '(quack-smart-open-paren-p t)
- '(safe-local-variable-values (quote ((Syntax . Common-Lisp))))
- '(yas-trigger-key (kbd "TAB")))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(quack-pltish-defn-face ((t (:foreground "DarkGoldenrod2" :weight bold))))
- '(quack-pltish-module-defn-face ((t (:inherit quack-pltish-defn-face :foreground "orange2"))))
- '(quack-pltish-paren-face ((t (:foreground "salmon"))))
- '(quack-pltish-selfeval-face ((t (:foreground "indian red")))))
-;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
-;; (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
-;; ## end of OPAM user-setup addition for emacs / base ## keep this line
