@@ -29,7 +29,7 @@
               ring-bell-function       'ignore
               read-buffer-function     'iswitchb-read-buffer
               line-move-visual         nil
-              recentf-max-saved-items  1000
+              ;; recentf-max-saved-items  1000
               kill-ring-max            200
               indent-line-function     'indent-relative-maybe
               ns-command-modifier      'meta
@@ -143,4 +143,3 @@
 
 ;; Load theme
 (load-theme 'deeper-blue t)
-;; (load-theme 'wombat t)
