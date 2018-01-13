@@ -10,8 +10,7 @@
   (add-hook 'haskell-mode-hook 'haskell-decl-scan-mode)
   (add-hook 'haskell-mode-hook 'haskell-doc-mode)
   :config
-  (custom-set-variables
-   '(haskell-process-type 'stack-ghci))
+  (setq-default haskell-process-type 'stack-ghci)
   (setq haskell-process-type 'stack-ghci)
   (setq haskell-process-path-ghci "stack")
   (setq haskell-process-args-ghci "ghci"))
