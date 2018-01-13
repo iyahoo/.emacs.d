@@ -2,18 +2,12 @@
 *~
 .bm-repository
 .cask/
-ac-comphist.dat
-clang-complete
-auto-save-list/
-el-get/
 elisp/
 history
 snippets/
-elpa/
 elscreen
-ensime
+ensime/
 recentf
-request/
 tramp
 url/
 dict/
@@ -27,7 +21,6 @@ emojis/
 eshell/
 lisp/PG
 network-security.data
-opam-user-setup.el
 srecode-map.el
 seagle_emacs.d
 places
