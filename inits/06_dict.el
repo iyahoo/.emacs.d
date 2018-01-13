@@ -1,4 +1,4 @@
-(when macp
+(when *macp*
   (defun ns-popup-dictionary ()
     (interactive)
     (let ((word (substring-no-properties (thing-at-point 'word)))

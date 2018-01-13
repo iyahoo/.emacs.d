@@ -59,7 +59,7 @@
 (ffap-bindings)
 
 ;; Font
-(cond (macp
+(cond (*macp*
        (let* ((size 19)
               (jpfont "Hiragino Maru Gothic ProN")
               (asciifont "Fira Code")
@@ -108,7 +108,7 @@
   (interactive)
   (scroll-up 3))
 
-(cond (macp
+(cond (*macp*
        (bind-keys ([wheel-up] . scroll-down-with-lines)
                   ([wheel-down] . scroll-up-with-lines)
                   ([double-wheel-up] . scroll-down-with-lines)

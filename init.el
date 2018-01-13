@@ -1,24 +1,28 @@
 (when (version< emacs-version "24.4")
   (error "Your Emacs is too old!"))
 
-(defconst macp (eq system-type 'darwin))
-(defconst linuxp (eq system-type 'gnu/linux))
+;; System check
+(defconst *macp*   (eq system-type 'darwin))
+(defconst *linuxp* (eq system-type 'gnu/linux))
 
 ;; Optimize
 (setq file-name-handler-alist nil)
 (setq gc-cons-threshold 30000000)
 
 ;; My info
-(setq user-full-name "Tomoya Furukawa")
+(setq user-full-name    "Tomoya Furukawa")
 (setq user-mail-address "s1200191@gmail.com")
 
-;; cask
-(cond (macp
-       (let ((cask-file-path "/usr/local/share/emacs/site-lisp/cask/cask.el"))
-         (if (file-exists-p cask-file-path)
-             (require 'cask cask-file-path)
-           (error "This init.el requires cask.")))))
+;; Cask path
+(defconst *cask-file-path*
+  (cond (*macp* "/usr/local/share/emacs/site-lisp/cask/cask.el")
+        (t nil)))
 
+;; Load Cask
+(unless (and (stringp *cask-file-path*) (file-exists-p *cask-file-path*))
+  (error "This init.el requires cask."))
+
+(require 'cask *cask-file-path*)
 (cask-initialize)
 
 ;; Load path
@@ -28,18 +32,22 @@
 (require 'use-package)
 (setq use-package-enable-imenu-support t)
 
+;; pallet
+(use-package pallet
+  :config
+  (pallet-mode t))
+
 ;; Package
-(defvar *mode* 'default)
-(setq *mode* 'full)
+(defvar *mode* 'stable)
+;; (setq *mode* 'all)
 
 (pcase *mode*
-  ('default (setq package-archives
-                  '(("melpa-stable" . "https://stable.melpa.org/packages/"))))
-  ('full    (setq package-archives
-                  '(("gnu"          . "http://elpa.gnu.org/packages/")
-                    ("melpa"        . "http://melpa.org/packages/")
-                    ("org"          . "http://orgmode.org/elpa/")
-                    ("melpa-stable" . "https://stable.melpa.org/packages/")))))
+  ('stable (setq package-archives
+                 '(("melpa-stable" . "https://stable.melpa.org/packages/"))))
+  ('all    (setq package-archives
+                 '(("gnu"   . "http://elpa.gnu.org/packages/")
+                   ("melpa" . "http://melpa.org/packages/")
+                   ("org"   . "http://orgmode.org/elpa/")))))
 
 (package-initialize)
 
@@ -58,11 +66,6 @@
     (setq exec-path-from-shell-variables '("PATH" "MANPATH"))
     (exec-path-from-shell-initialize)))
 
-;; pallet
-(use-package pallet
-  :config
-  (pallet-mode t))
-
 ;; init-loader
 (use-package init-loader
   :config
@@ -70,3 +73,4 @@
   (cond ((not window-system))
         ((window-system)
          (init-loader-load "~/.emacs.d/Inits"))))
+
