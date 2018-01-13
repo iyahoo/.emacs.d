@@ -10,5 +10,6 @@
           ;; ("*Helm Swoop*" :regexp t :dedicated t :position bottom)
           ("*Google Translate*" :position bottom :height 0.4 :dedicated t)
           ("*Warnings*" :dedicated t :position bottom :stick t :noselect t)
-          ("^\*magit.+" :regexp t :position bottom :height 0.5 :dedicated nil :stick nil))))
+          ;; ("^\*magit.+" :regexp t :position bottom :height 0.5 :dedicated nil :stick nil)
+          )))
 
