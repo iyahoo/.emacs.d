@@ -72,5 +72,5 @@
   (setq init-loader-show-log-after-init 'error-only)
   (cond ((not window-system))
         ((window-system)
-         (init-loader-load "~/.emacs.d/Inits"))))
+         (init-loader-load (expand-file-name "inits" user-emacs-directory)))))
 
