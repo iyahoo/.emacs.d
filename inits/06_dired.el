@@ -16,12 +16,18 @@
              ("C-c C-d" . dired-hide-details-mode))
   (setq dired-recursive-deletes 'always)
   (setq dired-recursive-copies  'always)
-
+  (use-package dired-aux
+    :after dired
+    :config
+    (add-to-list 'dired-compress-file-suffixes
+                 '(".zip" "unzip")))
   (use-package dired+
     :after dired
     :config
     (setq dired-dwim-target t)
-    (bind-key "d" 'diredp-dired-files ctl-x-map)
-    (bind-key "d" 'diredp-dired-files-other-window ctl-x-4-map)
-    (bind-key "SPC" 'dired-toggle-mark dired-mode-map)
-    ))
+    (bind-keys :map ctl-x-map
+               ("d" . diredp-dired-files)
+               :map ctl-x-4-map
+               ("d" . diredp-dired-files-other-window)
+               :map dired-mode-map
+               ("SPC" . dired-toggle-mark))))
