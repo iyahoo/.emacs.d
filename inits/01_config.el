@@ -58,10 +58,23 @@
 
 ;; Save place
 (use-package saveplace
+  :defer nil
   :init
   (if (fboundp 'save-place-mode)
       (save-place-mode)
     (setq save-place t)))
+
+(use-package recentf
+  :defer nil
+  :init
+  (add-hook 'find-file-hook (lambda () (unless recentf-mode
+                                         (recentf-mode)
+                                         (recentf-track-opened-file))))
+  (recentf-mode t)
+  (setq recentf-max-saved-items 200
+        recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
+  (add-to-list 'recentf-exclude (expand-file-name package-user-dir))
+  (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'"))
 
 ;;
 (ffap-bindings)
