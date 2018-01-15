@@ -36,25 +36,34 @@
 ;; pallet
 (use-package pallet
   :defer nil
-  :config
+  :init
   (pallet-mode t))
 
 ;; Package
 (defvar *mode* 'stable)
-;; (setq *mode* 'all)
 
-(pcase *mode*
-  ('stable (setq package-archives
-                 '(("melpa-stable" . "https://stable.melpa.org/packages/"))))
-  ('all    (setq package-archives
-                 '(("gnu"   . "http://elpa.gnu.org/packages/")
-                   ("melpa" . "http://melpa.org/packages/")
-                   ("org"   . "http://orgmode.org/elpa/")))))
+(defun set-archives (archive)
+  (setq package-archives
+        (pcase archive
+          ('stable '(("melpa-stable" . "https://stable.melpa.org/packages/")))
+          ('all '(("gnu"   . "http://elpa.gnu.org/packages/")
+                  ("melpa" . "http://melpa.org/packages/")
+                  ("org"   . "http://orgmode.org/elpa/"))))))
+
+(defun select-archives (n)
+  (interactive "nSelect package archives (1:stable 2:all): ")
+  (let ((archive (pcase n
+                   (1 'stable)
+                   (2 'all))))
+    (set-archives archive)))
+
+(select-archives 1)
 
 (package-initialize)
 
 ;; Paradox
 (use-package paradox
+  :ensure t
   :defer nil
   :config
   (setq paradox-github-token t)
@@ -74,6 +83,7 @@
 ;; PATH
 (when (memq window-system '(mac ns x))
   (use-package exec-path-from-shell
+    :ensure t
     :defer nil
     :init
     (setq exec-path-from-shell-variables '("PATH" "MANPATH"))
@@ -81,6 +91,7 @@
 
 ;; init-loader
 (use-package init-loader
+  :ensure t
   :defer nil
   :config
   (setq init-loader-show-log-after-init 'error-only)
