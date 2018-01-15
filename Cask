@@ -1,4 +1,7 @@
 (source melpa-stable)
+(source "gnu" "http://elpa.gnu.org/packages/")
+(source "melpa" "http://melpa.org/packages/")
+(source org)
 
 (depends-on "4clojure")
 (depends-on "ac-helm")
@@ -105,6 +108,7 @@
 (depends-on "multiple-cursors")
 (depends-on "mwim")
 (depends-on "newlisp-mode")
+(depends-on "noflet")
 (depends-on "oauth2")
 (depends-on "org")
 (depends-on "package-build")
