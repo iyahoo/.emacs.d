@@ -17,6 +17,7 @@
 (depends-on "autopair")
 (depends-on "avy")
 (depends-on "avy-zap")
+(depends-on "benchmark-init")
 (depends-on "bibtex-utils")
 (depends-on "bm")
 (depends-on "cask")

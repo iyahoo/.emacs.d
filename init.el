@@ -53,21 +53,33 @@
 
 ;; Paradox
 (use-package paradox
+  :defer nil
   :config
   (setq paradox-github-token t)
   (setq paradox-execute-asynchronously t)
   (setq paradox-automatically-star nil)
   (setq paradox-display-star-count t))
 
+
+(use-package benchmark-init
+  :ensure t
+  :defer nil
+  :config
+  (benchmark-init/activate)
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
+
 ;; PATH
 (when (memq window-system '(mac ns x))
   (use-package exec-path-from-shell
+    :defer nil
     :init
     (setq exec-path-from-shell-variables '("PATH" "MANPATH"))
     (exec-path-from-shell-initialize)))
 
 ;; init-loader
 (use-package init-loader
+  :defer nil
   :config
   (setq init-loader-show-log-after-init 'error-only)
   (cond ((not window-system))
