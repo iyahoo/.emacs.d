@@ -1,7 +1,4 @@
-(source "gnu" "http://elpa.gnu.org/packages/")
-(source "melpa" "http://melpa.org/packages/")
 (source melpa-stable)
-(source org)
 
 (depends-on "4clojure")
 (depends-on "ac-helm")
@@ -65,6 +62,7 @@
 (depends-on "git-commit")
 (depends-on "gntp")
 (depends-on "gnuplot-mode")
+(depends-on "golden-ratio")
 (depends-on "google-translate")
 (depends-on "graphviz-dot-mode")
 (depends-on "haskell-mode")
