@@ -29,17 +29,18 @@
     (setq frame-title-format title)))))
 
 (use-package elscreen
+  :disabled t
   :init
   (elscreen-start)
-  :bind* (("M-t" . elscreen-create)
-          ("M-T" . elscreen-clone)
-          ("M-}" . elscreen-next)
-          ("M-{" . elscreen-previous)
-          ([C-tab] . elscreen-next)
-          ([C-S-tab] . elscreen-previous)
-          ("C-q C-s" . elscreen-persist-store)
-          ("C-q C-r" . elscreen-persist-restore)
-          ("C-z C-k" . elscreen-kill))
   :config
   (setq elscreen-tab-display-kill-screen nil
-        elscreen-tab-display-control nil))
+        elscreen-tab-display-control nil)
+  (bind-keys* ("M-t" . elscreen-create)
+              ("M-T" . elscreen-clone)
+              ("M-}" . elscreen-next)
+              ("M-{" . elscreen-previous)
+              ([C-tab] . elscreen-next)
+              ([C-S-tab] . elscreen-previous)
+              ("C-q C-s" . elscreen-persist-store)
+              ("C-q C-r" . elscreen-persist-restore)
+              ("C-z C-k" . elscreen-kill)))
