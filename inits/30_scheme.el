@@ -1,11 +1,3 @@
-(use-package scheme-mode
-  :mode (("\\.scm$" . scheme-mode))
-  :config
-  (setq tab-always-indet 'complete)
-  (lambda ()
-    (scheme-indent-set)
-    (setq scheme-program-name "/usr/local/bin/gosh -i")))
-
 ;; indent
 
 (defun scheme-indent-set ()
@@ -82,24 +74,13 @@
   (put 'with-time-counter 'scheme-indent-function 1)
   (put 'with-signal-handlers 'scheme-indent-function 1))
 
-;; emacsでGauche
-(setq process-coding-system-alist
-      (cons '("gosh" utf-8 . utf-8) process-coding-system-alist))
-(setq process-coding-system-alist
-      (cons '("racket" utf-8 . utf-8) process-coding-system-alist))
-
-(autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
-(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
-
-(defun scheme-other-window ()
-  "Run Gauche on other window"
-  (interactive)
-  (split-window-horizontally (/ (frame-width) 2))
-  (let ((buf-name (buffer-name (current-buffer))))
-    (scheme-mode)
-    (switch-to-buffer-other-window
-     (get-buffer-create "*scheme*"))
-    (run-scheme scheme-program-name)
-    (switch-to-buffer-other-window
-     (get-buffer-create buf-name))))
+(use-package scheme-mode
+  :mode (("\\.scm$" . scheme-mode))
+  :commands (run-scheme)
+  :config
+  (setq tab-always-indet 'complete
+        process-coding-system-alist (cons '("racket" utf-8 . utf-8) process-coding-system-alist))
+  (lambda ()
+    (scheme-indent-set)
+    (setq scheme-program-name "/usr/local/bin/gosh -i")))
 
