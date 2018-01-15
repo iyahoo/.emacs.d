@@ -138,8 +138,18 @@
 
 ;; Auto revert
 (use-package autorevert
+  :defer nil
   :diminish auto-revert-mode
   :init (global-auto-revert-mode t))
+
+;; Manual revert
+(defun revert-current-buffer ()
+  "Revert the current buffer."
+  (interactive)
+  (message "Revert this buffer.")
+  (revert-buffer t t))
+
+(bind-key "<f5>" 'revert-current-buffer)
 
 ;; Load theme
 (load-theme 'deeper-blue t)
