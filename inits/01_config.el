@@ -20,24 +20,32 @@
 (set-fill-column       9999)
 (iswitchb-mode         t)
 
-(setq-default indent-tabs-mode         nil
-              default-tab-width        4
-              make-pointer-invisible   t
-              show-trailing-whitespace t
-              kill-whole-line          t
-              delete-auto-save-files   t
-              ring-bell-function       'ignore
-              read-buffer-function     'iswitchb-read-buffer
-              line-move-visual         nil
-              ;; recentf-max-saved-items  1000
-              kill-ring-max            200
-              indent-line-function     'indent-relative-maybe
-              ns-command-modifier      'meta
-              ns-alternate-modifier    'super
-              debug-on-error           t)
+(setq-default  indent-tabs-mode     nil
+               default-tab-width    4
+               indent-line-function 'indent-relative-maybe
+               ;;
+               make-pointer-invisible   t
+               line-move-visual         nil
+               show-trailing-whitespace t
+               ring-bell-function       'ignore
+               ;;
+               delete-auto-save-files    t
+               delete-by-moving-to-trash t
+               read-buffer-function      'iswitchb-read-buffer
+               ;;
+               ;; recentf-max-saved-items 1000
+               kill-ring-max           200
+               kill-whole-line         t
+               ;; Key
+               ns-command-modifier   'meta
+               ns-alternate-modifier 'super
+               ;; debug
+               debug-on-error t
+               )
 
-(setq inhibit-startup-message  t
-      windmove-wrap-around     t)
+(setq inhibit-startup-message t
+      windmove-wrap-around    t
+      )
 
 ;; Emacs title
 (setq frame-title-format
@@ -80,9 +88,8 @@
                  (".*osaka-medium.*" . 1.2)
                  (".*courier-bold-.*-mac-roman" . 1.0)
                  (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
-                 (".*monaco-bold-.*-mac-roman" . 0.9) ;
-                 ("-cdac$" . 1.3)))
-         )))
+                 (".*monaco-bold-.*-mac-roman" . 0.9)
+                 ("-cdac$" . 1.3))))))
 ;; サイズテスト
 ;; saiizutesuto
 
@@ -115,13 +122,6 @@
                   ([double-wheel-down] . scroll-up-with-lines)
                   ([triple-wheel-up] . scroll-down-with-lines)
                   ([triple-wheel-down] . scroll-up-with-lines))))
-;; recursive-edit
-(defadvice abort-recursive-edit (before minibuffer-save)
-  (when (when (eq (selected-window) (active-minibuffer-window))
-          (add-to-history minibuffer-history-variable (minibuffer-contents)))))
-
-;; Trash
-(setq delete-by-moving-to-trash t)
 
 ;; Auto revert
 (use-package autorevert
