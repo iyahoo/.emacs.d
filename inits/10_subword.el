@@ -1,4 +1,4 @@
 (use-package subword
   :diminish subword-mode
-  :config
+  :init
   (global-subword-mode t))

@@ -15,9 +15,9 @@
     (split-string (buffer-string) "\n" t)))
 
 (use-package ace-pinyin
-  :diminish AcePY
+  :diminish ace-pinyin-mode
   :bind* (("C-;" . ace-jump-char-mode))
-  :config
+  :init
   (let ((sorce-pinyin-file "inits/15_avy_chartable.txt"))
     (when (file-exists-p sorce-pinyin-file)
       (setq ace-pinyin--char-table

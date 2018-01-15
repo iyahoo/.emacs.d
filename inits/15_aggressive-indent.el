@@ -1,4 +1,4 @@
 (use-package aggressive-indent
   :diminish aggressive-indent-mode
-  :config
+  :init
   (global-aggressive-indent-mode))
