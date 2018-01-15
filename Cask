@@ -150,6 +150,8 @@
 (depends-on "symbol-overlay")
 (depends-on "tern")
 (depends-on "tern-auto-complete")
+(depends-on "treemacs")
+(depends-on "treemacs-projectile")
 (depends-on "tuareg")
 (depends-on "twittering-mode")
 (depends-on "undo-tree")
