@@ -1,5 +1,5 @@
 ;; Initialize bind (sparse) keys
-(defconst sparse-key "C-q")
+(defconst sparse-key "M-m")
 (bind-key sparse-key (make-sparse-keymap))
 
 (defun sparse-key+ (key)
@@ -23,12 +23,11 @@
 
  ;; Move window
  ("C-t" . other-window-or-split)
- ((sparse-key+ "C-r") . my-window-resizer)
 
  ;; delete
  ("C-h" . backward-delete-char)
  ("M-h" . backward-kill-word)
- ((sparse-key+ "C-d")
+ ((sparse-key+ "M-d")
   .
   (lambda ()
     (interactive)
@@ -50,9 +49,9 @@
             (message "eval-buffer")))
 
  ;; special
- ((sparse-key+ "C-q") . quoted-insert)
+ ((sparse-key+ "q") . quoted-insert)
 
- ;; quickrun
+ ;; quickruno
  ("C-x C-c" . quickrun))
 
 (bind-keys
