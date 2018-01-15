@@ -7,10 +7,9 @@
 ;; TODO
 
 (use-package fic-mode
+  :defer nil
   :init (fic-mode t)
   :config
   (setq fic-activated-faces '(font-lock-comment-face))
   (set-face-background 'fic-face "yellow")
   (set-face-background 'fic-author-face "yellow"))
-
-

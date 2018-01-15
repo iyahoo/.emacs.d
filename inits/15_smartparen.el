@@ -1,4 +1,5 @@
 (use-package smartparens
+  :defer nil
   :diminish smartparens-mode
   :init (smartparens-global-mode)
   :config
