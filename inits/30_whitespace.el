@@ -1,4 +1,7 @@
 (use-package whitespace
+  :diminish (global-whitespace-mode
+             whitespace-mode
+             whitespace-newline-mode)
   :bind ("C-x w" . global-whitespace-mode)
   :init (global-whitespace-mode t)
   :config

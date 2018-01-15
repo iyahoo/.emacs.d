@@ -1,4 +1,5 @@
 (use-package smartparens
+  :diminish smartparens-mode
   :init (smartparens-global-mode)
   :config
   (sp-pair "(" ")" :wrap "C-(")
