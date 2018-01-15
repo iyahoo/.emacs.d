@@ -1,4 +1,5 @@
 (use-package scala-mode
+  :disabled t
   :mode (("\\.scala$" . scala-mode))
   :config
   (defun my/file-exists-p (file)
@@ -20,7 +21,8 @@
                                 (when (my/file-exists-p ".ensime")
                                   (ensime-scala-mode-hook)))))
 
-(use-package ensime :ensure t :pin melpa-stable
+(use-package ensime
+  :disabled t
   :config
   (defun scala/enable-eldoc ()
     "Show error message or type name at point by Eldoc."
@@ -31,7 +33,7 @@
                         (or (and err (not (string= err "")) err)
                             (ensime-print-type-at-point))))))
     (eldoc-mode +1))
-  
+
   (defun scala/completing-dot-company ()
     (cond (company-backend
            (company-complete-selection)
@@ -39,7 +41,7 @@
           (t
            (insert ".")
            (company-complete))))
-  
+
   (defun scala/completing-dot ()
     "Insert a period and show company completions."
     (interactive "*")
@@ -55,7 +57,6 @@
           ((eq ensime-completion-style 'auto-complete)
            (scala/completing-dot-ac))))
   (bind-key "." #'scala/completing-dot scala-mode-map)
-  ;; 補完には company を使用する
   (setq ensime-completion-style 'company)
   (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
   (add-hook 'ensime-mode-hook #'scala/enable-eldoc))

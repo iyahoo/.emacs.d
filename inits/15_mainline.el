@@ -1,9 +1,9 @@
 (use-package main-line
-  :disabled t
+  :disabled
   :config
   (setq main-line-separator-style 'arrow)
   (defmain-line row "%4l"))
 
 (use-package powerline
-  :disabled t
+  ;; :disable
   :init (powerline-default-theme))
