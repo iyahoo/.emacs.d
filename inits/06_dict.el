@@ -8,9 +8,9 @@
           (dict))
       (set-buffer dict-buf)
       (erase-buffer)
-      (call-process "~/.emacs.d/dict/commandline-dictionary-app/src/dict"
-                    nil "*dictionary.app*" t word
-                    "Japanese-English" "Japanese" "Japanese Synonyms")
+      (call-process "~/.emacs.d/dict/commandline-dictionary-app/src/dict" nil
+                    "*dictionary.app*" t
+                    word "Japanese-English" "Japanese" "Japanese Synonyms")
       (setq dict (buffer-string))
       (set-buffer old-buf)
       (when view-mode
@@ -19,4 +19,5 @@
       (popup-tip dict)
       (when view-mode-p
         (view-mode))))
+
   (bind-key "C-c d" 'ns-popup-dictionary))

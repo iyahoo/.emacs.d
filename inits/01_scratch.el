@@ -18,7 +18,9 @@
 
 (defun read-scratch-data ()
   (let ((file "~/.emacs.d/.scratch"))
-       (when (file-exists-p file)
-             (set-buffer (get-buffer "*scratch*"))
-             (erase-buffer)
-             (insert-file-contents file))))
+    (when (file-exists-p file)
+      (set-buffer (get-buffer "*scratch*"))
+      (erase-buffer)
+      (insert-file-contents file))))
+
+(read-scratch-data)
