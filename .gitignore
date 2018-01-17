@@ -2,6 +2,8 @@
 *~
 .bm-repository
 .cask/
+.cache/
+.emacs.desktop
 elisp/
 history
 snippets/
