@@ -1,4 +1,3 @@
-(source melpa-stable)
 (source "gnu" "http://elpa.gnu.org/packages/")
 (source "melpa" "http://melpa.org/packages/")
 (source org)

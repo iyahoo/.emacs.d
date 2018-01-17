@@ -40,7 +40,7 @@
   (pallet-mode t))
 
 ;; Package
-(defvar *mode* 'stable)
+(defvar *mode* 'all)
 
 (defun set-archives (archive)
   (setq package-archives
