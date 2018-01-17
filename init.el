@@ -63,6 +63,7 @@
 
 ;; Paradox
 (use-package paradox
+  :disabled
   :ensure t
   :defer nil
   :config
