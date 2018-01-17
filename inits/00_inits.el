@@ -11,6 +11,11 @@
     (split-window-horizontally))
   (other-window 1))
 
+(defun delete-trailing-whitespace-with-message ()
+  (interactive)
+  (delete-trailing-whitespace)
+  (message "Delete tailing whitespace!"))
+
 (bind-keys* ;; force
  ;; Move cursol
  ("C-s" . forward-char)
@@ -27,12 +32,7 @@
  ;; delete
  ("C-h" . backward-delete-char)
  ("M-h" . backward-kill-word)
- ((sparse-key+ "M-d")
-  .
-  (lambda ()
-    (interactive)
-    (delete-trailing-whitespace)
-    (message "Delete tailing whitespace!")))
+ ((sparse-key+ "M-d") . delete-trailing-whitespace-with-message)
  ;; toggle
  ("C-c l" . toggle-truncate-lines)
 
