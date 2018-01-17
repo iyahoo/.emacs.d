@@ -74,7 +74,7 @@
   (setq recentf-max-saved-items 200
         recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
   (add-to-list 'recentf-exclude (expand-file-name package-user-dir))
-  (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'"))
+  (add-to-list 'recentf-exclude "recentf"))
 
 ;;
 (ffap-bindings)
@@ -135,6 +135,12 @@
                   ([double-wheel-down] . scroll-up-with-lines)
                   ([triple-wheel-up] . scroll-down-with-lines)
                   ([triple-wheel-down] . scroll-up-with-lines))))
+
+;; Window
+
+(use-package windmove
+  :ensure nil
+  :init (add-hook 'after-init-hook #'windmove-default-keybindings))
 
 ;; Auto revert
 (use-package autorevert
