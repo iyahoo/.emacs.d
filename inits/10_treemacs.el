@@ -20,7 +20,7 @@
                 treemacs-tag-follow-cleanup         t
                 treemacs-tag-follow-delay           1.5
                 treemacs-winum-number               10
-                treemacs-width                      30)
+                treemacs-width                      25)
 
   (treemacs-follow-mode t)
   (treemacs-filewatch-mode t)
