@@ -1,7 +1,6 @@
 ;; indent
 
 (defun scheme-indent-set ()
-  ;;(setq lisp-indent-function 'scheme-smart-indent-function)
   (put 'when 'scheme-smart-indent-function 1)
   (put 'unless 'scheme-smart-indent-function 1)
   (put 'with-signal-handlers 'scheme-indent-function 1)
@@ -76,11 +75,11 @@
 
 (use-package scheme-mode
   :mode (("\\.scm$" . scheme-mode))
+  :init
+  (setq scheme-program-name "/usr/local/bin/gosh -i")
+  (add-hook 'scheme-mode-hook 'scheme-indent-set)
   :commands (run-scheme)
   :config
   (setq tab-always-indet 'complete
-        process-coding-system-alist (cons '("racket" utf-8 . utf-8) process-coding-system-alist))
-  (lambda ()
-    (scheme-indent-set)
-    (setq scheme-program-name "/usr/local/bin/gosh -i")))
+        process-coding-system-alist (cons '("gauche" utf-8 . utf-8) process-coding-system-alist)))
 
