@@ -16,6 +16,7 @@
                 skk-check-okurigana-on-touroku     'auto
 
                 skk-use-look t
+                skk-use-act  t
 
                 skk-use-numeric-conversion t
 
