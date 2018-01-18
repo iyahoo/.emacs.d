@@ -1,7 +1,6 @@
 (use-package skk
   :bind* ("C-\\" . skk-mode)
   :config
-
   (setq-default skk-japanese-message-and-error t
                 skk-show-japanese-menu         nil
 
@@ -19,7 +18,7 @@
                 skk-check-okurigana-on-touroku     'auto
 
                 skk-use-look t
-                skk-use-act  t
+                skk-use-act  nil
 
                 skk-use-numeric-conversion t
 
