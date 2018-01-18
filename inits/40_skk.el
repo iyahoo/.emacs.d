@@ -1,12 +1,14 @@
 (use-package skk
-  :bind* (:map global-map ("C-\\" . skk-mode))
+  :bind* ("C-\\" . skk-mode)
   :config
+
   (setq-default skk-japanese-message-and-error t
                 skk-show-japanese-menu         nil
 
-                skk-show-annotation t
-                skk-show-tooltip    t
-                skk-show-inline     'vertical
+                skk-show-annotation  t
+                skk-show-tooltip     t
+                skk-show-inline      'vertical
+                skk-use-color-cursor t
 
                 skk-egg-like-newline t
 
@@ -37,6 +39,14 @@
 
   (when skk-show-inline
     (setq-default skk-inline-show-face nil))
+
+  (when skk-use-color-cursor
+    (setq-default skk-cursor-hiragana-color       "DarkRed"
+                  skk-cursor-katakana-color       "DodgerBlue"
+                  skk-cursor-abbrev-color         "red"
+                  skk-cursor-jisx0208-latin-color "red"
+                  skk-cursor-jisx0201-color       "purple"
+                  skk-cursor-latin-color          "LightGreen"))
 
   (when skk-use-look
     (setq-default skk-look-recursive-search t
