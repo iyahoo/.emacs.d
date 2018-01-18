@@ -1,5 +1,5 @@
 (use-package skk
-  :bind* (("C-\\" . skk-mode))
+  :bind* (:map global-map ("C-\\" . skk-mode))
   :config
   (setq-default skk-japanese-message-and-error t
                 skk-show-japanese-menu         nil
@@ -10,7 +10,8 @@
 
                 skk-egg-like-newline t
 
-                skk-kutouten-type 'en
+                skk-kutouten-type 'jp
+                skk-jisyo-code "euc"
 
                 skk-henkan-strict-okuri-precedence t
                 skk-check-okurigana-on-touroku     'auto
@@ -23,7 +24,11 @@
                 skk-server-host "localhost"
                 skk-server-portnum 1178
                 skk-share-private-jisyo t
-                )
+
+                skk-save-jisyo-instantly t
+
+                skk-auto-insert-paren t
+                skk-delete-implies-kakutei nil)
 
   (when skk-show-tooltip
     (setq-default skk-tooltip-parameters
@@ -60,7 +65,7 @@
     (run-with-idle-timer skk-auto-save-jisyo-interval
                          skk-auto-save-jisyo-interval
                          'skk-auto-save-jisyo))
-
+  ;;
   (setq skk-rom-kana-rule-list
         (cons '("-" nil skk-hyphen)
               skk-rom-kana-rule-list))
