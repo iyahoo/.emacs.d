@@ -25,6 +25,7 @@ lisp/PG
 network-security.data
 srecode-map.el
 seagle_emacs.d
+kawabata_emacs.d
 places
 request/
 *api*
