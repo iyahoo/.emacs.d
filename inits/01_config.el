@@ -158,4 +158,7 @@
 (bind-key "<f5>" 'revert-current-buffer)
 
 ;; Load theme
-(load-theme 'deeper-blue t)
+;; Normal
+;; (load-theme 'deeper-blue t)
+;; When nocturne mode
+(load-theme 'adwaita t)
