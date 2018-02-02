@@ -8,24 +8,19 @@
     (progn (push '(:eval (sky-color-clock)) mode-line-format)
            (setq sky-color-clock-mode t))))
 
-(defun my-file-contents (filename)
-  "Return the contents of FILENAME as string removing ?\n."
-  (remove ?\n
-          (with-temp-buffer
-            (insert-file-contents filename)
-            (buffer-string))))
+(defconst sky-api-key-file-path
+  (expand-emacs-home "inits/___sky_api.el"))
 
-(defun expand-emacs-home (path)
-  (expand-file-name path user-emacs-directory))
+(when (file-exists-p sky-api-key-file-path)
+  (defconst sky-api-key
+    (my-file-contents sky-api-key-file-path))
+  (use-package sky-color-clock
+    :disabled
+    :defer nil
+    :init
+    (require 'sky-color-clock)
+    (sky-color-clock-initialize 35)
+    (sky-color-clock-initialize-openweathermap-client sky-api-key 2112615)
+    (setq sky-color-clock-enable-emoji-icon t)))
 
-(defconst sky-api-key
-  (my-file-contents (expand-emacs-home "inits/___sky_api.el")))
 
-(use-package sky-color-clock
-  :disabled
-  :defer nil
-  :init
-  (require 'sky-color-clock)
-  (sky-color-clock-initialize 35)
-  (sky-color-clock-initialize-openweathermap-client sky-api-key 2112615)
-  (setq sky-color-clock-enable-emoji-icon t))
