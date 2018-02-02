@@ -25,4 +25,11 @@
   (defalias 'hg 'helm-do-grep)
   (defalias 'ht 'helm-etags-select)
   (defalias 'ha 'helm-ag)
-  (defalias 'haf 'helm-ag-this-file))
+  (defalias 'haf 'helm-ag-this-file)
+  :config
+  (bind-keys :map helm-map
+             ("C-h" . nil)
+             ("C-h" . backward-delete-char)
+             :map helm-buffer-map
+             ("C-h" . nil)
+             ("C-h" . backward-delete-char)))
