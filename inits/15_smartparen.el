@@ -13,6 +13,8 @@
   (sp-local-pair 'lisp-mode "~<" "~>")
   (sp-local-pair 'lisp-mode "~[" "~]")
 
+  (sp-local-pair 'latex-mode "$" "$")
+
   (sp-pair "'" nil :actions :rem)
   (sp-pair "`" nil :actions :rem)
   (sp-pair "<" nil :actions :rem)
