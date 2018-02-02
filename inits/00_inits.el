@@ -1,3 +1,14 @@
+;; Utility functions
+(defun expand-emacs-home (path)
+  (expand-file-name path user-emacs-directory))
+
+(defun my-file-contents (filename)
+  "Return the contents of FILENAME as string removed ?\n."
+  (remove ?\n
+          (with-temp-buffer
+            (insert-file-contents filename)
+            (buffer-string))))
+
 ;; Initialize bind (sparse) keys
 (defconst sparse-key "M-m")
 (bind-key sparse-key (make-sparse-keymap))
@@ -30,7 +41,7 @@
  ("C-t" . other-window-or-split)
 
  ;; delete
- ("C-h" . backward-delete-char)
+ ;; ("C-h" . backward-delete-char)
  ("M-h" . backward-kill-word)
  ((sparse-key+ "M-d") . delete-trailing-whitespace-with-message)
  ;; toggle
@@ -56,6 +67,7 @@
 
 (bind-keys
  ;; align-regexp
+ ("C-h" . backward-delete-char)
  ("C-x a r" . align-regexp)
  ("C-c a" . align)
 
