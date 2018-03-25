@@ -39,6 +39,7 @@
 
  ;; Move window
  ("C-t" . other-window-or-split)
+ ("C-=" . other-frame)
 
  ;; delete
  ;; ("C-h" . backward-delete-char)
@@ -72,7 +73,10 @@
  ("C-c a" . align)
 
  ;; Newline
- ("C-m" . newline-and-indent))
+ ("C-m" . newline-and-indent)
+
+ :map isearch-mode-map
+ ("C-h" . isearch))
 
 ;; Start server
 (use-package server
