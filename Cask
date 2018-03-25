@@ -132,6 +132,7 @@
 (depends-on "queue")
 (depends-on "quickrun")
 (depends-on "racer")
+(depends-on "racket-mode")
 (depends-on "rainbow-delimiters")
 (depends-on "redo+")
 (depends-on "request")
