@@ -29,3 +29,5 @@ kawabata_emacs.d
 places
 request/
 *api*
+.python-environments/
+ac-comphist.dat
