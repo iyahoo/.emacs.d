@@ -28,6 +28,7 @@
                line-move-visual         nil
                show-trailing-whitespace t
                ring-bell-function       'ignore
+               scroll-preserve-screen-position t
                ;;
                delete-auto-save-files    t
                delete-by-moving-to-trash t
@@ -40,8 +41,7 @@
                ns-command-modifier   'meta
                ns-alternate-modifier 'super
                ;; debug
-               debug-on-error t
-               )
+               debug-on-error t)
 
 (setq inhibit-startup-message t
       windmove-wrap-around    t
@@ -159,6 +159,6 @@
 
 ;; Load theme
 ;; Normal
-;; (load-theme 'deeper-blue t)
+(load-theme 'deeper-blue t)
 ;; When nocturne mode
-(load-theme 'adwaita t)
+;; (load-theme 'adwaita t)
