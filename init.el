@@ -107,10 +107,12 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (racket-mode helm-swoop powerline noflet benchmark-init diminish eyebrowse golden-ratio yatex yaml-mode which-key undo-tree twittering-mode tuareg tern-auto-complete symbol-overlay sr-speedbar smartscan smartrep shampoo shackle scheme-complete redo+ rainbow-delimiters racer quickrun quack py-gnitset py-autopep8 pos-tip popwin point-undo paredit paradox pandoc-mode pallet package-utils newlisp-mode mwim multiple-cursors markdown-mode main-line key-combo jump julia-shell init-loader image+ ido-skk ibuffer-vc hlinum hiwin hindent highlight-symbol helm-descbinds helm-company helm-c-yasnippet helm-anything helm-ag haskell-tab-indent graphviz-dot-mode google-translate gnuplot-mode ghc-imported-from fic-mode expand-region exec-path-from-shell esup ess-R-data-view erlang ensime emoji-cheat-sheet-plus elscreen eldoc-extension eimp easy-kill direx dired-toggle-sudo dired-toggle dired+ dash-functional dash-at-point company-ghc company-coq cider chicken-scheme bm bibtex-utils avy-zap autopair auto-highlight-symbol auto-complete-clang-async auto-async-byte-compile anzu aggressive-indent ace-pinyin ac-slime ac-js2 ac-helm 4clojure)))
+    (flymake-sass meghanada auto-virtualenvwrapper company-jedi jedi sass-mode racket-mode helm-swoop powerline noflet benchmark-init diminish eyebrowse golden-ratio yatex yaml-mode which-key undo-tree twittering-mode tuareg tern-auto-complete symbol-overlay sr-speedbar smartscan smartrep shampoo shackle scheme-complete redo+ rainbow-delimiters racer quickrun quack py-gnitset py-autopep8 pos-tip popwin point-undo paredit paradox pandoc-mode pallet package-utils newlisp-mode mwim multiple-cursors markdown-mode main-line key-combo jump julia-shell init-loader image+ ido-skk ibuffer-vc hlinum hiwin hindent highlight-symbol helm-descbinds helm-company helm-c-yasnippet helm-anything helm-ag haskell-tab-indent graphviz-dot-mode google-translate gnuplot-mode ghc-imported-from fic-mode expand-region exec-path-from-shell esup ess-R-data-view erlang ensime emoji-cheat-sheet-plus elscreen eldoc-extension eimp easy-kill direx dired-toggle-sudo dired-toggle dired+ dash-functional dash-at-point company-ghc company-coq cider chicken-scheme bm bibtex-utils avy-zap autopair auto-highlight-symbol auto-complete-clang-async auto-async-byte-compile anzu ace-pinyin ac-slime ac-js2 ac-helm 4clojure)))
  '(safe-local-variable-values
    (quote
-    ((cider-cljs-lein-repl . "(do (user/go) (user/cljs-repl))")
+    ((cider-refresh-after-fn . "server.core/start")
+     (cider-refresh-before-fn . "server.core/stop")
+     (cider-cljs-lein-repl . "(do (user/go) (user/cljs-repl))")
      (cider-refresh-after-fn . "reloaded.repl/resume")
      (cider-refresh-before-fn . "reloaded.repl/suspend")))))
 (custom-set-faces
@@ -119,3 +121,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'set-goal-column 'disabled nil)

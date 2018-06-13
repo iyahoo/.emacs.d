@@ -1,17 +1,16 @@
 (defun matlab-start ()
   (interactive)
   (matlab-shell)
-  nil)
-
-(use-package matlab
-  :mode (("\\.m\\'" . matlab-mode))
-  :config
   (bind-keys :map matlab-mode-map
              ("C-m" . newline)
              ("C-h" . delete-backward-char)
              :map matlab-shell-mode-map
-             ("C-m" . newline)
              ("C-h" . delete-backward-char))
+  nil)
+
+(use-package matlab
+  :mode (("\\.m$" . matlab-mode))
+  :config
   (setq matlab-shell-command "/Applications/MATLAB_R2017a.app/bin/matlab"
         matlab-shell-command-swithes '("-nojvm -nodisplay -nosplash")
         matlab-indent-level 4

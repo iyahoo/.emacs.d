@@ -1,3 +1,3 @@
-(use-package tuareg
-  :mode (("\\.\\(\\(m\\)\\|\\(mi\\)\\|\\(my\\)\\|\\(ml\\)\\|\\(mp\\)\\)$" . tuareg-mode)
-         ("\\.seml[iylp]?" . tuareg-mode)))
+;; (use-package tuareg
+;;   :mode (("\\(\\(mi\\)\\|\\(my\\)\\|\\(ml\\)\\|\\(mp\\)\\)$" . tuareg-mode)
+;;          ("\\.seml[iylp]?" . tuareg-mode)))

@@ -82,4 +82,3 @@
   :config
   (setq tab-always-indet 'complete
         process-coding-system-alist (cons '("gauche" utf-8 . utf-8) process-coding-system-alist)))
-
