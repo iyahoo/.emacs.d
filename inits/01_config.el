@@ -94,16 +94,17 @@
          (set-fontset-font t '(#x0080 . #x024F) asciifont)
          (set-fontset-font t 'unicode "Symbola" nil 'prepend)
          (set-fontset-font t 'cyrillic "Droid Sans Mono")
-         (setq face-font-rescale-alist
-               '(("^-apple-hiragino.*" . 1.0)
-                 (".*-Hiragino Maru Gothic ProN-.*" . 1.2)
-                 (".*osaka-bold.*" . 1.2)
-                 (".*osaka-medium.*" . 1.2)
-                 (".*courier-bold-.*-mac-roman" . 1.0)
-                 (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
-                 (".*monaco-bold-.*-mac-roman" . 0.9)
-                 ("-cdac$" . 1.3))))))
-;; サイズテスト
+         ;; (setq face-font-rescale-alist
+         ;;       '(("^-apple-hiragino.*" . 1.0)
+         ;;         (".*-Hiragino Maru Gothic ProN-.*" . 1.0)
+         ;;         (".*osaka-bold.*" . 1.0)
+         ;;         (".*osaka-medium.*" . 1.0)
+         ;;         (".*courier-bold-.*-mac-roman" . 1.0)
+         ;;         (".*monaco cy-bold-.*-mac-cyrillic" . 1.0)
+         ;;         (".*monaco-bold-.*-mac-roman" . 1.0)
+         ;;         ("-cdac$" . 1.0)))
+         )))
+;; サイズテストh
 ;; saiizutesuto
 
 (defun set-alpha (alpha-num)
