@@ -67,7 +67,6 @@
  ("C-x C-c" . quickrun))
 
 (bind-keys
- ;; align-regexp
  ("C-h" . backward-delete-char)
  ("C-x a r" . align-regexp)
  ("C-c a" . align)
@@ -75,8 +74,9 @@
  ;; Newline
  ("C-m" . newline-and-indent)
 
- :map isearch-mode-map
- ("C-h" . isearch))
+ ;; :map isearch-mode-map
+ ;; ("C-h" . isearch-backward-delete-char)
+ )
 
 ;; Start server
 (use-package server
