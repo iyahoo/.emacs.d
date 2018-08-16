@@ -22,7 +22,8 @@
         cider-repl-use-clojure-font-lock t
         cider-prompt-save-file-on-load 'always-save
         cider-font-lock-dynamically '(macro core function var)
-        cider-overlays-use-font-lock t)
+        cider-overlays-use-font-lock t
+        cider-repl-pop-to-buffer-on-connect nil)
   (cider-repl-toggle-pretty-printing)
   (bind-key "M-r" 'save-relode-test cider-mode-map)
   (put-clojure-indent 'match 1))
