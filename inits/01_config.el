@@ -6,8 +6,6 @@
 (setq show-paren-delay 0.02)
 (show-paren-mode t)
 (setq show-paren-style 'parenthesis)
-(set-face-underline 'show-paren-match-face nil)
-(set-face-foreground 'show-paren-match-face "pink")
 
 ;; Global setting
 (scroll-bar-mode      -1)
@@ -33,8 +31,8 @@
                delete-auto-save-files    t
                delete-by-moving-to-trash t
                read-buffer-function      'iswitchb-read-buffer
-               ;;
-               ;; recentf-max-saved-items 1000
+               recentf-max-saved-items 2000
+               recentf-max-menu-items 200
                kill-ring-max           200
                kill-whole-line         t
                ;; Key
@@ -94,15 +92,15 @@
          (set-fontset-font t '(#x0080 . #x024F) asciifont)
          (set-fontset-font t 'unicode "Symbola" nil 'prepend)
          (set-fontset-font t 'cyrillic "Droid Sans Mono")
-         ;; (setq face-font-rescale-alist
-         ;;       '(("^-apple-hiragino.*" . 1.0)
-         ;;         (".*-Hiragino Maru Gothic ProN-.*" . 1.0)
-         ;;         (".*osaka-bold.*" . 1.0)
-         ;;         (".*osaka-medium.*" . 1.0)
-         ;;         (".*courier-bold-.*-mac-roman" . 1.0)
-         ;;         (".*monaco cy-bold-.*-mac-cyrillic" . 1.0)
-         ;;         (".*monaco-bold-.*-mac-roman" . 1.0)
-         ;;         ("-cdac$" . 1.0)))
+         (setq face-font-rescale-alist
+               '(("^-apple-hiragino.*" . 1.0)
+                 (".*-Hiragino Maru Gothic ProN-.*" . 1.0)
+                 (".*osaka-bold.*" . 1.0)
+                 (".*osaka-medium.*" . 1.0)
+                 (".*courier-bold-.*-mac-roman" . 1.0)
+                 (".*monaco cy-bold-.*-mac-cyrillic" . 1.0)
+                 (".*monaco-bold-.*-mac-roman" . 1.0)
+                 ("-cdac$" . 1.0)))
          )))
 ;; サイズテストh
 ;; saiizutesuto
