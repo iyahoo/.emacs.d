@@ -15,8 +15,4 @@
     (propertize mode-line-str
                 'face '((:foreground "Dark green" :weight bold)))))
 
-(let ((cell (or (memq 'mode-line-position mode-line-format)
-                (memq 'mode-line-buffer-identification mode-line-format)))
-      (newcdr '(:eval (my/update-git-branch-mode-line))))
-  (unless (member newcdr mode-line-format)
-    (setcdr cell (cons newcdr (cdr cell)))))
+
