@@ -1,5 +1,5 @@
 (use-package symbol-overlay
-  :bind (("M-f" . symbol-overlay-put)
+  :bind (("M-s" . symbol-overlay-put)
          ("M-n" . symbol-overlay-switch-forward)
          ("M-p" . symbol-overlay-switch-backward)
          ("<f8>" . symbol-overlay-remove-all)))

@@ -29,9 +29,9 @@
 
 (bind-keys* ;; force
  ;; Move cursol
- ("C-s" . forward-char)
- ("C-f" . isearch-forward)
- ("M-s" . forward-word)
+ ("C-f" . forward-char)
+ ("C-s" . isearch-forward)
+ ("M-f" . forward-word)
  ("M-g" . goto-line)
  ("C-M-s" . forward-sexp)
  ("C-M-p" . (lambda () (interactive) (scroll-up 1)))
