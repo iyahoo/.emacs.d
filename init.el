@@ -46,9 +46,9 @@
   (setq package-archives
         (pcase archive
           ('stable '(("melpa-stable" . "https://stable.melpa.org/packages/")))
-          ('all '(("gnu"   . "http://elpa.gnu.org/packages/")
-                  ("melpa" . "http://melpa.org/packages/")
-                  ("org"   . "http://orgmode.org/elpa/"))))))
+          ('all '(("gnu"   . "https://elpa.gnu.org/packages/")
+                  ("melpa" . "https://melpa.org/packages/")
+                  ("org"   . "https://orgmode.org/elpa/"))))))
 
 (defun select-archives (n)
   (interactive "nSelect package archives (1:stable 2:all): ")
@@ -57,7 +57,7 @@
                    (2 'all))))
     (set-archives archive)))
 
-(select-archives 1)
+(select-archives 2)
 
 (package-initialize)
 
