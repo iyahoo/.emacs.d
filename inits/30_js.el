@@ -1,4 +1,8 @@
-(use-package js2-mode
-  :mode ("\\.js\\'" . js2-mode)
+(use-package web-mode
+  :mode ("\\.js\\'" . web-mode)
   :config
-  (add-hook 'js2-mode-hook #'js2-imenu-extras-mode))
+  (custom-set-variables
+   '(web-mode-enable-auto-quoting nil)
+   '(web-mode-enable-current-column-highlight t)
+   '(web-mode-enable-current-element-highlight t)
+   '(web-mode-markup-indent-offset 2)))
